@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="1562" y="-318"/>
         </scene>
-        <!--Overview Table View Controller-->
+        <!--Add Workout Type Table View Controller-->
         <scene sceneID="14z-CC-HY5">
             <objects>
-                <tableViewController id="AdZ-QT-tcP" customClass="OverviewTableViewController" customModule="WorkoutCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="AdZ-QT-tcP" customClass="AddWorkoutTypeTableViewController" customModule="WorkoutCompanion" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y0P-5l-jIP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,30 +62,66 @@
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WPY-tK-6Et" id="O4r-6n-Zfc">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-ib-GgU">
-                                            <rect key="frame" x="251" y="7" width="97" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-ib-GgU">
+                                            <rect key="frame" x="112" y="7" width="460" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axc-ZB-top">
-                                            <rect key="frame" x="26" y="11" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axc-ZB-top">
+                                            <rect key="frame" x="20" y="11" width="42" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="pAU-RI-PUE"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="pAU-RI-PUE"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="pAU-RI-PUE"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="axc-ZB-top" secondAttribute="trailing" constant="524" id="5ll-rV-NhT"/>
-                                        <constraint firstItem="axc-ZB-top" firstAttribute="centerY" secondItem="SDV-ib-GgU" secondAttribute="centerY" id="ILL-Pr-uNk"/>
-                                        <constraint firstItem="axc-ZB-top" firstAttribute="top" secondItem="O4r-6n-Zfc" secondAttribute="topMargin" constant="3" id="P9E-eJ-8lV"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="axc-ZB-top" secondAttribute="leading" constant="50" id="fo7-21-xQU"/>
-                                        <constraint firstItem="axc-ZB-top" firstAttribute="centerY" secondItem="O4r-6n-Zfc" secondAttribute="centerY" id="l1z-2s-u5D"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="SDV-ib-GgU" secondAttribute="trailing" constant="50" id="x1m-KB-15P"/>
+                                        <constraint firstItem="SDV-ib-GgU" firstAttribute="centerY" secondItem="O4r-6n-Zfc" secondAttribute="centerY" id="6xR-jF-uq1"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="SDV-ib-GgU" secondAttribute="trailing" constant="20" id="EaD-i3-Omg"/>
+                                        <constraint firstItem="axc-ZB-top" firstAttribute="centerY" secondItem="O4r-6n-Zfc" secondAttribute="centerY" id="G6u-VF-MFf"/>
+                                        <constraint firstItem="SDV-ib-GgU" firstAttribute="leading" secondItem="axc-ZB-top" secondAttribute="trailing" constant="50" id="OTv-vd-mGs"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="axc-ZB-top" secondAttribute="trailing" constant="300" id="eKK-sA-2Lt"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="SDV-ib-GgU" secondAttribute="trailing" constant="20" id="kh5-vE-Fv9"/>
+                                        <constraint firstItem="SDV-ib-GgU" firstAttribute="leading" secondItem="axc-ZB-top" secondAttribute="trailing" constant="50" id="rfd-UN-0E5"/>
+                                        <constraint firstItem="axc-ZB-top" firstAttribute="leading" secondItem="O4r-6n-Zfc" secondAttribute="leadingMargin" constant="20" id="so7-jl-OJc"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="G6u-VF-MFf"/>
+                                            <exclude reference="eKK-sA-2Lt"/>
+                                            <exclude reference="so7-jl-OJc"/>
+                                            <exclude reference="6xR-jF-uq1"/>
+                                            <exclude reference="OTv-vd-mGs"/>
+                                            <exclude reference="kh5-vE-Fv9"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="axc-ZB-top" firstAttribute="leading" secondItem="WPY-tK-6Et" secondAttribute="leading" constant="20" id="2hP-kV-Fas"/>
+                                    <constraint firstItem="SDV-ib-GgU" firstAttribute="centerY" secondItem="WPY-tK-6Et" secondAttribute="centerY" id="Prt-Mm-Qax"/>
+                                    <constraint firstItem="axc-ZB-top" firstAttribute="centerY" secondItem="WPY-tK-6Et" secondAttribute="centerY" id="Yiq-Gl-plb"/>
+                                    <constraint firstItem="axc-ZB-top" firstAttribute="centerX" secondItem="WPY-tK-6Et" secondAttribute="centerX" id="oqT-r2-3e8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="oqT-r2-3e8"/>
+                                    </mask>
+                                </variation>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -105,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="3066" y="-318"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Graphview View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="WorkoutCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="GraphviewViewController" customModule="WorkoutCompanion" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>

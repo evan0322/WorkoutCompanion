@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  GraphviewViewController.swift
 //  WorkoutCompanion
 //
 //  Created by WEI XIE on 2016-05-30.
