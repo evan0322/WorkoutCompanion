@@ -1,5 +1,5 @@
 //
-//  AddWorkoutTypeTableViewController.swift
+//  GraphviewViewController.swift
 //  WorkoutCompanion
 //
 //  Created by WEI XIE on 2016-05-30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddWorkoutTypeTableViewController: UITableViewController {
+class AddExerciseTableViewController: UITableViewController {
 
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true) { () -> Void in
@@ -40,12 +40,29 @@ class AddWorkoutTypeTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 5
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("inputCell", forIndexPath: indexPath)
-        
+        guard let textLabel = cell.contentView.viewWithTag(100) as? UILabel, textInput = cell.contentView.viewWithTag(101) as? UITextField else {
+            print("error, cannot get element from table view cell")
+            return cell
+        }
+        switch indexPath.row {
+        case 0:
+            textLabel.text = "Name:"
+        case 1:
+            textLabel.text = "Weight:"
+        case 2:
+            textLabel.text = "Sets:"
+        case 3:
+            textLabel.text = "Reps:"
+        case 4:
+            textLabel.text = "Data:"
+        default:
+            textLabel.text = ""
+        }
         
         return cell
     }
@@ -94,5 +111,7 @@ class AddWorkoutTypeTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+    }
 
 }

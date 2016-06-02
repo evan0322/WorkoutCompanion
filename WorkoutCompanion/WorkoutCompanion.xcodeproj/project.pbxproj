@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */; };
 		B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */; };
 		B59CB00D1CFD2F3200D2E1E0 /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00C1CFD2F3200D2E1E0 /* OverviewTableViewController.swift */; };
 		B59CB00F1CFD2F3200D2E1E0 /* GraphviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00E1CFD2F3200D2E1E0 /* GraphviewViewController.swift */; };
@@ -16,7 +17,7 @@
 		B59CB0221CFD2F3200D2E1E0 /* WorkoutCompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB0211CFD2F3200D2E1E0 /* WorkoutCompanionTests.swift */; };
 		B59CB02D1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB02C1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift */; };
 		B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */; };
-		B59CB03F1CFD373100D2E1E0 /* AddWorkoutTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03E1CFD373100D2E1E0 /* AddWorkoutTypeTableViewController.swift */; };
+		B59CB03F1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03E1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B59CB0071CFD2F3200D2E1E0 /* WorkoutCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59CB00C1CFD2F3200D2E1E0 /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +54,7 @@
 		B59CB02C1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompanionUITests.swift; sourceTree = "<group>"; };
 		B59CB02E1CFD2F3200D2E1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		B59CB03E1CFD373100D2E1E0 /* AddWorkoutTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWorkoutTypeTableViewController.swift; sourceTree = "<group>"; };
+		B59CB03E1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,8 @@
 				B59CB0151CFD2F3200D2E1E0 /* LaunchScreen.storyboard */,
 				B59CB0181CFD2F3200D2E1E0 /* Info.plist */,
 				B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */,
-				B59CB03E1CFD373100D2E1E0 /* AddWorkoutTypeTableViewController.swift */,
+				B59CB03E1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift */,
+				B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */,
 			);
 			path = WorkoutCompanion;
 			sourceTree = "<group>";
@@ -266,7 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59CB00F1CFD2F3200D2E1E0 /* GraphviewViewController.swift in Sources */,
-				B59CB03F1CFD373100D2E1E0 /* AddWorkoutTypeTableViewController.swift in Sources */,
+				B59CB03F1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift in Sources */,
+				B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */,
 				B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */,
 				B59CB00D1CFD2F3200D2E1E0 /* OverviewTableViewController.swift in Sources */,
 				B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */,
@@ -496,6 +500,7 @@
 				B59CB0331CFD2F3200D2E1E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B59CB0341CFD2F3200D2E1E0 /* Build configuration list for PBXNativeTarget "WorkoutCompanionTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +509,7 @@
 				B59CB0361CFD2F3200D2E1E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B59CB0371CFD2F3200D2E1E0 /* Build configuration list for PBXNativeTarget "WorkoutCompanionUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,8 +518,23 @@
 				B59CB0391CFD2F3200D2E1E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */;
+			name = CoreDataModel.xcdatamodeld;
+			path = ../CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B59CAFFF1CFD2F3200D2E1E0 /* Project object */;
 }
