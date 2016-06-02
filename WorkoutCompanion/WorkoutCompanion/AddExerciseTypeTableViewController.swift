@@ -9,12 +9,20 @@
 import UIKit
 
 class AddExerciseTableViewController: UITableViewController {
-
-    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            
-        }
+    
+    var exerciseData = [:]
+    var exerciseDataCellLabels = ["Name:","Weight:","Sets:","Reps:","Date:"]
+    
+    
+    enum exerciseDataType:String {
+        case Name
+        case Weight
+        case Sets
+        case Reps
+        case Date
     }
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,26 +53,52 @@ class AddExerciseTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("inputCell", forIndexPath: indexPath)
-        guard let textLabel = cell.contentView.viewWithTag(100) as? UILabel, textInput = cell.contentView.viewWithTag(101) as? UITextField else {
+        guard let textLabel = cell.contentView.viewWithTag(100) as? UILabel else {
             print("error, cannot get element from table view cell")
             return cell
         }
+        
         switch indexPath.row {
         case 0:
-            textLabel.text = "Name:"
+            textLabel.text = "\(exerciseDataType.Name.rawValue):"
         case 1:
-            textLabel.text = "Weight:"
+            textLabel.text = "\(exerciseDataType.Weight.rawValue):"
         case 2:
-            textLabel.text = "Sets:"
+            textLabel.text = "\(exerciseDataType.Sets.rawValue):"
         case 3:
-            textLabel.text = "Reps:"
+            textLabel.text = "\(exerciseDataType.Reps.rawValue):"
         case 4:
-            textLabel.text = "Data:"
+            textLabel.text = "\(exerciseDataType.Date.rawValue):"
         default:
             textLabel.text = ""
         }
         
         return cell
+    }
+    
+    
+    
+    
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true) { () -> Void in}
+    }
+    
+    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        let totalDataTypes = exerciseDataCellLabels.count
+        var dataDict=[String:String]()
+        for i in 0...totalDataTypes-1{
+            let indexPath = NSIndexPath(forRow:i, inSection:0)
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath)
+            guard let textLabel = cell!.contentView.viewWithTag(101) as? UITextField else {
+                print("error, cannot get element from table view cell")
+                return
+            }
+            guard let textLabelData = textLabel.text else {
+                print("error, cannot get element from table view cell")
+                return
+            }
+            dataDict[exerciseDataCellLabels[i]]=textLabelData
+        }
     }
 
     /*
@@ -111,7 +145,5 @@ class AddExerciseTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
-    }
 
 }
