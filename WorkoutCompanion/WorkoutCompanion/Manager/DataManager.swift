@@ -19,7 +19,7 @@ class DataManager {
         managedContext = appDelegate.managedObjectContext
     }
     
-    func saveData(dataDict: Dictionary<String, String>, dataType:Constants.CoreDataType) ->Bool{
+    func saveData(dataDict: Dictionary<String, AnyObject>, dataType:Constants.CoreDataType) ->Bool{
         guard let entity = NSEntityDescription.entityForName(dataType.rawValue, inManagedObjectContext: managedContext) else {
             return false
         }
