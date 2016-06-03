@@ -10,17 +10,7 @@ import UIKit
 
 class AddExerciseTableViewController: UITableViewController {
     
-    var exerciseData = [:]
-    var exerciseDataCellLabels = ["Name:","Weight:","Sets:","Reps:","Date:"]
-    
-    
-    enum exerciseDataType:String {
-        case Name
-        case Weight
-        case Sets
-        case Reps
-        case Date
-    }
+    var exerciseDataTypes = ["Name:","Weight:","Sets:","Reps:","Date:"]
 
 
     
@@ -58,24 +48,9 @@ class AddExerciseTableViewController: UITableViewController {
             return cell
         }
         
-        switch indexPath.row {
-        case 0:
-            textLabel.text = "\(exerciseDataType.Name.rawValue):"
-        case 1:
-            textLabel.text = "\(exerciseDataType.Weight.rawValue):"
-        case 2:
-            textLabel.text = "\(exerciseDataType.Sets.rawValue):"
-        case 3:
-            textLabel.text = "\(exerciseDataType.Reps.rawValue):"
-        case 4:
-            textLabel.text = "\(exerciseDataType.Date.rawValue):"
-        default:
-            textLabel.text = ""
-        }
-        
+        textLabel.text = exerciseDataTypes[indexPath.row]
         return cell
     }
-    
     
     
     
@@ -84,7 +59,7 @@ class AddExerciseTableViewController: UITableViewController {
     }
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
-        let totalDataTypes = exerciseDataCellLabels.count
+        let totalDataTypes = exerciseDataTypes.count
         var dataDict=[String:String]()
         for i in 0...totalDataTypes-1{
             let indexPath = NSIndexPath(forRow:i, inSection:0)
@@ -93,11 +68,27 @@ class AddExerciseTableViewController: UITableViewController {
                 print("error, cannot get element from table view cell")
                 return
             }
-            guard let textLabelData = textLabel.text else {
-                print("error, cannot get element from table view cell")
+            guard let textLabelData = textLabel.text where textLabel.text != "" else {
+                print("error, input field is empty")
+                let alert = UIAlertController(title: "Error", message: "Input cannot be empty", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
+                })
+                let confirmAction = UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction) -> Void in
+                })
+                alert.addAction(cancelAction)
+                alert.addAction(confirmAction)
+                presentViewController(alert, animated: true, completion: { () -> Void in
+                })
                 return
             }
-            dataDict[exerciseDataCellLabels[i]]=textLabelData
+            
+            dataDict[exerciseDataTypes[i]]=textLabelData
+            let manager = DataManager()
+            
+            guard manager.saveData(dataDict, dataType: Constants.CoreDataType.Exercise) else {
+                print("error storing data")
+                return
+            }
         }
     }
 

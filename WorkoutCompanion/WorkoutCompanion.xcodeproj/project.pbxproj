@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */; };
+		B53BECF61D01240300944663 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF51D01240300944663 /* DataManager.swift */; };
+		B53BED721D012C7100944663 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BED711D012C7100944663 /* Constants.swift */; };
 		B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */; };
 		B59CB00D1CFD2F3200D2E1E0 /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00C1CFD2F3200D2E1E0 /* OverviewTableViewController.swift */; };
 		B59CB00F1CFD2F3200D2E1E0 /* GraphviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00E1CFD2F3200D2E1E0 /* GraphviewViewController.swift */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		B53BECF51D01240300944663 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Manager/DataManager.swift; sourceTree = "<group>"; };
+		B53BED711D012C7100944663 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B59CB0071CFD2F3200D2E1E0 /* WorkoutCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59CB00C1CFD2F3200D2E1E0 /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +118,9 @@
 				B59CB0181CFD2F3200D2E1E0 /* Info.plist */,
 				B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */,
 				B59CB03E1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift */,
+				B53BECF51D01240300944663 /* DataManager.swift */,
 				B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */,
+				B53BED711D012C7100944663 /* Constants.swift */,
 			);
 			path = WorkoutCompanion;
 			sourceTree = "<group>";
@@ -271,9 +277,11 @@
 				B59CB00F1CFD2F3200D2E1E0 /* GraphviewViewController.swift in Sources */,
 				B59CB03F1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift in Sources */,
 				B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */,
+				B53BECF61D01240300944663 /* DataManager.swift in Sources */,
 				B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */,
 				B59CB00D1CFD2F3200D2E1E0 /* OverviewTableViewController.swift in Sources */,
 				B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */,
+				B53BED721D012C7100944663 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
