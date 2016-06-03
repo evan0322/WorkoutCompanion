@@ -10,7 +10,7 @@ import UIKit
 
 class AddExerciseTableViewController: UITableViewController {
     
-    var exerciseDataTypes = ["Name:","Weight:","Sets:","Reps:","Date:"]
+    var exerciseDataTypes = ["Name:","Weights:","Sets:","Reps:","Date:"]
 
 
     

@@ -27,8 +27,10 @@ class DataManager {
         
         for (key, data) in dataDict {
             //Error here
-            managedObject.setValue(data, forKey: key)
+            let trimedKey = key.stringByReplacingOccurrencesOfString(":", withString: "")
+            managedObject.setValue(data, forKey: trimedKey)
         }
+        
         do{
             try managedContext.save()
         } catch let error as NSError {
@@ -37,7 +39,8 @@ class DataManager {
         }
         return true
     }
-    func getData(dataType:Constants.CoreDataType) -> Array<Dictionary<String,String>>{
+    
+    func getData(dataType: Constants.CoreDataType) -> Array<Dictionary<String,String>>{
         let fetchRequest = NSFetchRequest(entityName: dataType.rawValue)
         var dataArray = [Dictionary<String,String>]()
         do {
