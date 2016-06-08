@@ -13,7 +13,7 @@ class FirstViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let manager = DataManager()
-        manager.getData(Constants.CoreDataType.Exercise)
+        //manager.getData(Constants.CoreDataType.Exercise)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

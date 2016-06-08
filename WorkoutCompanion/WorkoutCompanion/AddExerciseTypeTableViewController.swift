@@ -81,15 +81,15 @@ class AddExerciseTableViewController: UITableViewController {
                 })
                 return
             }
-            
             dataDict[exerciseDataTypes[i]]=textLabelData
-            let manager = DataManager()
-            
-            guard manager.saveData(dataDict, dataType: Constants.CoreDataType.Exercise) else {
-                print("error storing data")
-                return
-            }
+  
         }
+        let manager = DataManager()
+        guard manager.saveData(dataDict, dataType: Constants.CoreDataType.Exercise) else {
+            print("error storing data")
+            return
+        }
+        manager.getData(Constants.CoreDataType.Exercise)
     }
 
     /*

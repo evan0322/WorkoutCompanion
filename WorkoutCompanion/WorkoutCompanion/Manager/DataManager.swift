@@ -46,7 +46,10 @@ class DataManager {
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            let managedObjects = results as! [NSManagedObject]
+            for managedObject in results as! [NSManagedObject]{
+                print(managedObject)
+                managedObject.valueForKey("Name")
+            }
 
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
