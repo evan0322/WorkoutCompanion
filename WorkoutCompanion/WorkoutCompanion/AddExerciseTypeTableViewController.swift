@@ -10,7 +10,7 @@ import UIKit
 
 class AddExerciseTableViewController: UITableViewController {
     
-    var exerciseDataTypes = ["Name:","Weights:","Sets:","Reps:","Date:"]
+    var exerciseDataTypes = ["Name","Weights","Sets","Reps","Date"]
 
 
     
@@ -47,8 +47,11 @@ class AddExerciseTableViewController: UITableViewController {
             print("error, cannot get element from table view cell")
             return cell
         }
-        
-        textLabel.text = exerciseDataTypes[indexPath.row]
+        var labelTexts = exerciseDataTypes.map{(dataType) -> String in
+            let newStr:String = dataType + String(":")
+            return newStr
+        }
+        textLabel.text = labelTexts[indexPath.row]
         return cell
     }
     
@@ -85,11 +88,14 @@ class AddExerciseTableViewController: UITableViewController {
   
         }
         let manager = DataManager()
+        manager.deleteAllData(Constants.CoreDataType.Exercise.rawValue)
         guard manager.saveData(dataDict, dataType: Constants.CoreDataType.Exercise) else {
             print("error storing data")
             return
         }
-        manager.getData(Constants.CoreDataType.Exercise)
+        
+        
+        let array = manager.getData(Constants.CoreDataType.Exercise)
     }
 
     /*

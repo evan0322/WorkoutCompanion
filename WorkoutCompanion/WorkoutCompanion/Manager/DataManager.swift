@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class DataManager {
+    var exerciseDataTypes = ["Name","Weights","Sets","Reps","Date"]
     
     let appDelegate:AppDelegate
     let managedContext:NSManagedObjectContext
@@ -26,9 +27,7 @@ class DataManager {
         let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
         
         for (key, data) in dataDict {
-            //Error here
-            let trimedKey = key.stringByReplacingOccurrencesOfString(":", withString: "")
-            managedObject.setValue(data, forKey: trimedKey)
+            managedObject.setValue(data, forKey: key)
         }
         
         do{
@@ -40,23 +39,47 @@ class DataManager {
         return true
     }
     
-    func getData(dataType: Constants.CoreDataType) -> Array<Dictionary<String,String>>{
+    func getData(dataType: Constants.CoreDataType) -> Array<Dictionary<String,String>>?{
         let fetchRequest = NSFetchRequest(entityName: dataType.rawValue)
-        var dataArray = [Dictionary<String,String>]()
         do {
+            var dataArray = [Dictionary<String,String>]()
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
             for managedObject in results as! [NSManagedObject]{
-                print(managedObject)
-                managedObject.valueForKey("Name")
+                var dataDictionary = [String:String]()
+                for exerciseDataType in exerciseDataTypes{
+                    guard let value = managedObject.valueForKey(exerciseDataType) else{
+                        return nil
+                    }
+                    dataDictionary[exerciseDataType] = value as! String
+                }
+                dataArray.append(dataDictionary)
             }
-
+            return dataArray
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
+            return nil
         }
-        var testDict = ["1":"1"]
-        dataArray.append(testDict)
-        return dataArray
+    }
+    
+    func deleteAllData(entity: String)
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.deleteObject(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }
     }
 
 }
