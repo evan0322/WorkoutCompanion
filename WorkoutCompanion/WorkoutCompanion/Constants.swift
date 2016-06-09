@@ -10,6 +10,7 @@ import Foundation
 
 class Constants{
     enum CoreDataType: String{
-        case Exercise 
+        case ExerciseDetailData
+        case Exercise
     }
 }

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Exercise" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="exerciseDetailData" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ExerciseDetailData" inverseName="exercise" inverseEntity="ExerciseDetailData" syncable="YES"/>
+    </entity>
+    <entity name="ExerciseDetailData" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reps" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sets" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weights" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="exerciseDetailData" inverseEntity="Exercise" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Exercise" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="ExerciseDetailData" positionX="135" positionY="18" width="128" height="133"/>
+        <element name="Exercise" positionX="-135" positionY="72" width="128" height="73"/>
     </elements>
 </model>

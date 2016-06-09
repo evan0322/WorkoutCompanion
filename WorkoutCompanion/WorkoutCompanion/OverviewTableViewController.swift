@@ -45,6 +45,24 @@ class FirstViewController: UITableViewController {
     return cell
     }
     
+    @IBAction func addButtonPressed(sender: AnyObject) {
+        let addController = UIAlertController(title: "Add an excercise", message: "Enter the name", preferredStyle: .Alert)
+        addController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "name"
+            textField.clearButtonMode = .WhileEditing;
+        }
+        let confirmAction = UIAlertAction(title: "Ok", style: .Default) { (alertAction) in
+            print("confirm pressed")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alertAction) in
+            print("cancel pressed")
+        }
+        addController.addAction(cancelAction)
+        addController.addAction(confirmAction)
+        presentViewController(addController, animated: true) {
+            
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

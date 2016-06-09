@@ -88,14 +88,14 @@ class AddExerciseTableViewController: UITableViewController {
   
         }
         let manager = DataManager()
-        manager.deleteAllData(.Exercise)
-        guard manager.saveData(dataDict, dataType:.Exercise) else {
+        manager.deleteAllData(.ExerciseDetailData)
+        guard manager.saveData(dataDict, dataType:.ExerciseDetailData) else {
             print("error storing data")
             return
         }
         
         
-        let array = manager.getData(.Exercise)
+        let array = manager.getData(.ExerciseDetailData)
     }
 
     /*

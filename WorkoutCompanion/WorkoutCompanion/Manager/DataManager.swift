@@ -20,6 +20,25 @@ class DataManager {
         managedContext = appDelegate.managedObjectContext
     }
     
+    func savaEntity(dataDict: Dictionary<String, AnyObject>, dataType:Constants.CoreDataType, parentEntity:String?) -> Bool{
+        switch dataType {
+        case .Exercise:
+            guard let entity = NSEntityDescription.entityForName(dataType.rawValue, inManagedObjectContext: managedContext) else {
+                return false
+            }
+            let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
+            for (key, data) in dataDict {
+                managedObject.setValue(data, forKey: key)
+            }
+            return true
+        case .ExerciseDetailData:
+            return false
+        
+        }
+    }
+    
+    
+    
     func saveData(dataDict: Dictionary<String, AnyObject>, dataType:Constants.CoreDataType) ->Bool{
         guard let entity = NSEntityDescription.entityForName(dataType.rawValue, inManagedObjectContext: managedContext) else {
             return false

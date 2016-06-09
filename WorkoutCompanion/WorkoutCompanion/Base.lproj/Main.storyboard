@@ -32,7 +32,7 @@
                     <navigationItem key="navigationItem" id="36y-YY-5jC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kTK-mt-rnH">
                             <connections>
-                                <segue destination="4li-34-moY" kind="presentation" id="PgH-dv-vfA"/>
+                                <action selector="addButtonPressed:" destination="8Ov-bP-QcD" id="hrt-kE-Qed"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
