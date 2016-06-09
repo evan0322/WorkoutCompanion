@@ -51,7 +51,7 @@ class DataManager {
                     guard let value = managedObject.valueForKey(exerciseDataType) else{
                         return nil
                     }
-                    dataDictionary[exerciseDataType] = value as! String
+                    dataDictionary[exerciseDataType] = value as? String
                 }
                 dataArray.append(dataDictionary)
             }
@@ -62,11 +62,11 @@ class DataManager {
         }
     }
     
-    func deleteAllData(entity: String)
+    func deleteAllData(dataType: Constants.CoreDataType) -> Bool
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: entity)
+        let fetchRequest = NSFetchRequest(entityName: dataType.rawValue)
         fetchRequest.returnsObjectsAsFaults = false
         
         do
@@ -77,8 +77,10 @@ class DataManager {
                 let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
                 managedContext.deleteObject(managedObjectData)
             }
+            return true
         } catch let error as NSError {
-            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+            print("Detele all data in \(dataType.rawValue) error : \(error) \(error.userInfo)")
+            return false
         }
     }
 

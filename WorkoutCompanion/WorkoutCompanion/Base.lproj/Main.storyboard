@@ -58,28 +58,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-ib-GgU">
-                                            <rect key="frame" x="70" y="7" width="502" height="30"/>
+                                            <rect key="frame" x="118" y="7" width="454" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axc-ZB-top">
-                                            <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axc-ZB-top">
+                                            <rect key="frame" x="8" y="11" width="80" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="pAU-RI-PUE"/>
+                                                <constraint firstAttribute="width" constant="80" id="acI-IW-J6a"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="pAU-RI-PUE"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="widthClass=compact">
-                                                <mask key="constraints">
-                                                    <include reference="pAU-RI-PUE"/>
-                                                </mask>
-                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -87,10 +77,11 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="SDV-ib-GgU" secondAttribute="trailing" constant="20" id="EaD-i3-Omg"/>
                                         <constraint firstItem="axc-ZB-top" firstAttribute="centerY" secondItem="O4r-6n-Zfc" secondAttribute="centerY" id="G6u-VF-MFf"/>
                                         <constraint firstItem="SDV-ib-GgU" firstAttribute="leading" secondItem="axc-ZB-top" secondAttribute="trailing" constant="50" id="OTv-vd-mGs"/>
+                                        <constraint firstItem="SDV-ib-GgU" firstAttribute="leading" secondItem="axc-ZB-top" secondAttribute="trailing" constant="30" id="QOK-C5-naS"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="axc-ZB-top" secondAttribute="trailing" constant="300" id="eKK-sA-2Lt"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="SDV-ib-GgU" secondAttribute="trailing" constant="20" id="kh5-vE-Fv9"/>
-                                        <constraint firstItem="SDV-ib-GgU" firstAttribute="leading" secondItem="axc-ZB-top" secondAttribute="trailing" constant="20" id="rfd-UN-0E5"/>
                                         <constraint firstItem="axc-ZB-top" firstAttribute="leading" secondItem="O4r-6n-Zfc" secondAttribute="leadingMargin" constant="20" id="so7-jl-OJc"/>
+                                        <constraint firstItem="SDV-ib-GgU" firstAttribute="leading" secondItem="axc-ZB-top" secondAttribute="trailing" constant="60" id="t4x-jD-gES"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -100,6 +91,7 @@
                                             <exclude reference="6xR-jF-uq1"/>
                                             <exclude reference="OTv-vd-mGs"/>
                                             <exclude reference="kh5-vE-Fv9"/>
+                                            <exclude reference="t4x-jD-gES"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
