@@ -31,8 +31,6 @@ class DataManager {
         }
         
         //Fetch exercise type and attach data to it.
-        
-        
         let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
         do {
             let results =

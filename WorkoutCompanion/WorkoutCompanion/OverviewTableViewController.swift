@@ -11,6 +11,7 @@ import UIKit
 class FirstViewController: UITableViewController {
     
     var exercises = [Exercise]()
+    var exerciseNames = [String]()
     let manager = DataManager()
 
     override func viewDidLoad() {
