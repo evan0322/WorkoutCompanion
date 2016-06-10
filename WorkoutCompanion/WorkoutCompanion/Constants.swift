@@ -9,8 +9,8 @@
 import Foundation
 
 class Constants{
-    enum CoreDataType: String{
-        case ExerciseDetailData
+    enum CoreDataEntityType: String{
+        case ExerciseData
         case Exercise
     }
 }

@@ -87,16 +87,7 @@ class AddExerciseTableViewController: UITableViewController {
             dataDict[exerciseDataTypes[i]]=textLabelData
   
         }
-        let manager = DataManager()
-        manager.deleteAllData(.ExerciseDetailData)
-        guard manager.saveData(dataDict, dataType:.ExerciseDetailData) else {
-            print("error storing data")
-            return
-        }
-        
-        
-        let array = manager.getData(.ExerciseDetailData)
-    }
+}
 
     /*
     // Override to support conditional editing of the table view.

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5120C271D0B0E9F00B216A7 /* DataModules.swift */; };
 		B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */; };
 		B53BECF61D01240300944663 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF51D01240300944663 /* DataManager.swift */; };
 		B53BED721D012C7100944663 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BED711D012C7100944663 /* Constants.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B5120C271D0B0E9F00B216A7 /* DataModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
 		B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B53BECF51D01240300944663 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Manager/DataManager.swift; sourceTree = "<group>"; };
 		B53BED711D012C7100944663 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				B53BECF51D01240300944663 /* DataManager.swift */,
 				B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */,
 				B53BED711D012C7100944663 /* Constants.swift */,
+				B5120C271D0B0E9F00B216A7 /* DataModules.swift */,
 			);
 			path = WorkoutCompanion;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */,
 				B53BECF61D01240300944663 /* DataManager.swift in Sources */,
 				B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */,
+				B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */,
 				B59CB00D1CFD2F3200D2E1E0 /* OverviewTableViewController.swift in Sources */,
 				B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */,
 				B53BED721D012C7100944663 /* Constants.swift in Sources */,

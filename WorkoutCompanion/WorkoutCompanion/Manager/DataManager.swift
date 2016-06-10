@@ -20,35 +20,48 @@ class DataManager {
         managedContext = appDelegate.managedObjectContext
     }
     
-    func savaEntity(dataDict: Dictionary<String, AnyObject>, dataType:Constants.CoreDataType, parentEntity:String?) -> Bool{
-        switch dataType {
-        case .Exercise:
-            guard let entity = NSEntityDescription.entityForName(dataType.rawValue, inManagedObjectContext: managedContext) else {
-                return false
-            }
-            let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
-            for (key, data) in dataDict {
-                managedObject.setValue(data, forKey: key)
+    
+    func saveExerciseData(dataDict: Dictionary<String, AnyObject>, exerciseName:String) -> Bool{
+        guard let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.ExerciseData.rawValue, inManagedObjectContext: managedContext) else {
+            return false
+        }
+        let exerciseData = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! ExerciseData
+        for (key, data) in dataDict {
+            exerciseData.setValue(data, forKey: key)
+        }
+        
+        //Fetch exercise type and attach data to it.
+        
+        
+        let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            for exercise in results as! [Exercise]{
+                guard let name = exercise.valueForKey("name") else {
+                    return false
+                }
+                if name as! String == exerciseName {
+                    exercise.ExerciseData = [exerciseData]
+                    exerciseData.exercise = exercise
+                    try managedContext.save()
+                }
             }
             return true
-        case .ExerciseDetailData:
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
             return false
-        
         }
     }
     
-    
-    
-    func saveData(dataDict: Dictionary<String, AnyObject>, dataType:Constants.CoreDataType) ->Bool{
-        guard let entity = NSEntityDescription.entityForName(dataType.rawValue, inManagedObjectContext: managedContext) else {
+    func saveExercise(dataDict: Dictionary<String, String>) -> Bool{
+        guard let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.Exercise.rawValue, inManagedObjectContext: managedContext) else {
             return false
         }
         let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
-        
         for (key, data) in dataDict {
             managedObject.setValue(data, forKey: key)
         }
-        
         do{
             try managedContext.save()
         } catch let error as NSError {
@@ -58,30 +71,131 @@ class DataManager {
         return true
     }
     
-    func getData(dataType: Constants.CoreDataType) -> Array<Dictionary<String,String>>?{
-        let fetchRequest = NSFetchRequest(entityName: dataType.rawValue)
+    func getExercise (name:String) -> Exercise? {
+        let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
         do {
-            var dataArray = [Dictionary<String,String>]()
             let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            for managedObject in results as! [NSManagedObject]{
-                var dataDictionary = [String:String]()
-                for exerciseDataType in exerciseDataTypes{
-                    guard let value = managedObject.valueForKey(exerciseDataType) else{
-                        return nil
-                    }
-                    dataDictionary[exerciseDataType] = value as? String
+                try managedContext.executeFetchRequest(fetchRequest) as! Array<Exercise>
+            for  exercise in results {
+                if exercise.name == name {
+                    return exercise
                 }
-                dataArray.append(dataDictionary)
             }
-            return dataArray
+            return nil
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
             return nil
         }
     }
     
-    func deleteAllData(dataType: Constants.CoreDataType) -> Bool
+    func getExerciseList() -> Array<Exercise>? {
+        let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest) as! Array<Exercise>
+            
+            return results
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
+    
+    
+    
+    
+//    func savaEntity(dataDict: Dictionary<String, AnyObject>, entityType:Constants.CoreDataEntityType) -> Bool{
+//        guard let entity = NSEntityDescription.entityForName(entityType.rawValue, inManagedObjectContext: managedContext) else {
+//            return false
+//        }
+//        let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
+//        for (key, data) in dataDict {
+//            managedObject.setValue(data, forKey: key)
+//        }
+//        do{
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save \(error), \(error.userInfo)")
+//            return false
+//        }
+//        return true
+//    }
+//    
+//    
+//    func savaEntity(dataDict: Dictionary<String, AnyObject>, entityType:Constants.CoreDataEntityType, parentEntityName:String, parentEntityType:Constants.CoreDataEntityType) -> Bool{
+//        guard let entity = NSEntityDescription.entityForName(entityType.rawValue, inManagedObjectContext: managedContext) else {
+//            return false
+//        }
+//        let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
+//        for (key, data) in dataDict {
+//            managedObject.setValue(data, forKey: key)
+//        }
+//        
+//        //Fetch parent entity
+//        let fetchRequest = NSFetchRequest(entityName: dataType.rawValue)
+//        do {
+//            var dataArray = [Dictionary<String,String>]()
+//            let results =
+//                try managedContext.executeFetchRequest(fetchRequest)
+//        }
+//        
+//        
+//        for  parentEntityObject in parentEntityObjects as Array<Dictionary<String,String>> {
+//            guard let name = parentEntityObject["name"] else {
+//                print("Parent entity does not have a name parameter.")
+//                return false
+//            }
+//            if name = parentEntityName
+//        }
+//        
+//    }
+//    
+//    
+//    
+//    func saveData(dataDict: Dictionary<String, AnyObject>, dataType:Constants.CoreDataEntityType) ->Bool{
+//        guard let entity = NSEntityDescription.entityForName(dataType.rawValue, inManagedObjectContext: managedContext) else {
+//            return false
+//        }
+//        let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
+//        
+//        for (key, data) in dataDict {
+//            managedObject.setValue(data, forKey: key)
+//        }
+//        
+//        do{
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save \(error), \(error.userInfo)")
+//            return false
+//        }
+//        return true
+//    }
+//    
+//    func getData(dataType: Constants.CoreDataEntityType) -> Array<Dictionary<String,String>>?{
+//        let fetchRequest = NSFetchRequest(entityName: dataType.rawValue)
+//        do {
+//            var dataArray = [Dictionary<String,String>]()
+//            let results =
+//            try managedContext.executeFetchRequest(fetchRequest)
+//            for managedObject in results as! [NSManagedObject]{
+//                var dataDictionary = [String:String]()
+//                for exerciseDataType in exerciseDataTypes{
+//                    guard let value = managedObject.valueForKey(exerciseDataType) else{
+//                        return nil
+//                    }
+//                    dataDictionary[exerciseDataType] = value as? String
+//                }
+//                dataArray.append(dataDictionary)
+//            }
+//            return dataArray
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//            return nil
+//        }
+//    }
+    
+    func deleteAllData(dataType: Constants.CoreDataEntityType) -> Bool
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext

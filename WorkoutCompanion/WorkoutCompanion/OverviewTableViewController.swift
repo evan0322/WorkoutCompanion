@@ -46,13 +46,31 @@ class FirstViewController: UITableViewController {
     }
     
     @IBAction func addButtonPressed(sender: AnyObject) {
-        let addController = UIAlertController(title: "Add an excercise", message: "Enter the name", preferredStyle: .Alert)
+        let addController = UIAlertController(title: "Add an exercise", message: "Enter the name", preferredStyle: .Alert)
         addController.addTextFieldWithConfigurationHandler { (textField) in
             textField.placeholder = "name"
             textField.clearButtonMode = .WhileEditing;
         }
         let confirmAction = UIAlertAction(title: "Ok", style: .Default) { (alertAction) in
             print("confirm pressed")
+            let manager = DataManager()
+            manager.deleteAllData(.Exercise)
+            let textFeild = addController.textFields![0] as UITextField
+            guard let text = textFeild.text else{
+                return
+            }
+            guard manager.saveExercise(["name":text]) else {
+                print("cannot store exercise")
+                return
+            }
+            guard let exercises = manager.getExerciseList() else {
+                return
+            }
+            
+            let result  = exercises[0] as Exercise
+            let name = result.name
+            
+            print(result.name)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alertAction) in
             print("cancel pressed")
