@@ -9,10 +9,16 @@
 import UIKit
 
 class FirstViewController: UITableViewController {
+    
+    var exercises = [Exercise]()
+    let manager = DataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let manager = DataManager()
+        guard let retrievedExercises = manager.getExerciseList() else {
+            return
+        }
+        exercises = retrievedExercises
         //manager.getData(Constants.CoreDataType.Exercise)
         
         // Uncomment the following line to preserve selection between presentations
@@ -34,15 +40,13 @@ class FirstViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return exercises.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-    
-    // Configure the cell...
-    
-    return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
+        cell.textLabel!.text = exercises[indexPath.row].name
+        return cell
     }
     
     @IBAction func addButtonPressed(sender: AnyObject) {
@@ -53,22 +57,20 @@ class FirstViewController: UITableViewController {
         }
         let confirmAction = UIAlertAction(title: "Ok", style: .Default) { (alertAction) in
             print("confirm pressed")
-            let manager = DataManager()
-            //manager.deleteAllData(.Exercise)
             let textFeild = addController.textFields![0] as UITextField
             guard let text = textFeild.text else{
                 return
             }
-            guard manager.saveExercise(["name":text]) else {
+            guard self.manager.saveExercise(["name":text]) else {
                 print("cannot store exercise")
                 return
             }
-            guard let exercises = manager.getExerciseList() else {
+            guard let retrievedExercises = self.manager.getExerciseList() else {
                 return
             }
-            for exercise in exercises {
-                print(exercise.name)
-            }
+            self.exercises = retrievedExercises
+            print(self.exercises)
+            self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alertAction) in
             print("cancel pressed")
@@ -78,6 +80,9 @@ class FirstViewController: UITableViewController {
         presentViewController(addController, animated: true) {
             
         }
+    }
+    @IBAction func deleteButtonPressed(sender: AnyObject) {
+        manager.deleteAllData(.Exercise)
     }
     /*
     // Override to support conditional editing of the table view.

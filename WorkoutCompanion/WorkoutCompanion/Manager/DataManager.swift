@@ -210,6 +210,7 @@ class DataManager {
                 let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
                 managedContext.deleteObject(managedObjectData)
             }
+            try managedContext.save()
             return true
         } catch let error as NSError {
             print("Detele all data in \(dataType.rawValue) error : \(error) \(error.userInfo)")
