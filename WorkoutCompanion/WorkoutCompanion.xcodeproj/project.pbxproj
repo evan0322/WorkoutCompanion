@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5120C271D0B0E9F00B216A7 /* DataModules.swift */; };
+		B52C79BE1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */; };
 		B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */; };
 		B53BECF61D01240300944663 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF51D01240300944663 /* DataManager.swift */; };
 		B53BED721D012C7100944663 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BED711D012C7100944663 /* Constants.swift */; };
 		B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */; };
-		B59CB00D1CFD2F3200D2E1E0 /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00C1CFD2F3200D2E1E0 /* OverviewTableViewController.swift */; };
+		B59CB00D1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00C1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift */; };
 		B59CB00F1CFD2F3200D2E1E0 /* GraphviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00E1CFD2F3200D2E1E0 /* GraphviewViewController.swift */; };
 		B59CB0121CFD2F3200D2E1E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59CB0101CFD2F3200D2E1E0 /* Main.storyboard */; };
 		B59CB0141CFD2F3200D2E1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59CB0131CFD2F3200D2E1E0 /* Assets.xcassets */; };
@@ -20,7 +21,7 @@
 		B59CB0221CFD2F3200D2E1E0 /* WorkoutCompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB0211CFD2F3200D2E1E0 /* WorkoutCompanionTests.swift */; };
 		B59CB02D1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB02C1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift */; };
 		B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */; };
-		B59CB03F1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03E1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift */; };
+		B59CB03F1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03E1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,12 +43,13 @@
 
 /* Begin PBXFileReference section */
 		B5120C271D0B0E9F00B216A7 /* DataModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
+		B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDetailTableViewController.swift; sourceTree = "<group>"; };
 		B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B53BECF51D01240300944663 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Manager/DataManager.swift; sourceTree = "<group>"; };
 		B53BED711D012C7100944663 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B59CB0071CFD2F3200D2E1E0 /* WorkoutCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B59CB00C1CFD2F3200D2E1E0 /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
+		B59CB00C1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListTableVIewController.swift; sourceTree = "<group>"; };
 		B59CB00E1CFD2F3200D2E1E0 /* GraphviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphviewViewController.swift; sourceTree = "<group>"; };
 		B59CB0111CFD2F3200D2E1E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B59CB0131CFD2F3200D2E1E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +62,7 @@
 		B59CB02C1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompanionUITests.swift; sourceTree = "<group>"; };
 		B59CB02E1CFD2F3200D2E1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		B59CB03E1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeTableViewController.swift; sourceTree = "<group>"; };
+		B59CB03E1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,14 +114,15 @@
 			isa = PBXGroup;
 			children = (
 				B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */,
-				B59CB00C1CFD2F3200D2E1E0 /* OverviewTableViewController.swift */,
+				B59CB00C1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift */,
+				B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */,
+				B59CB03E1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift */,
 				B59CB00E1CFD2F3200D2E1E0 /* GraphviewViewController.swift */,
 				B59CB0101CFD2F3200D2E1E0 /* Main.storyboard */,
 				B59CB0131CFD2F3200D2E1E0 /* Assets.xcassets */,
 				B59CB0151CFD2F3200D2E1E0 /* LaunchScreen.storyboard */,
 				B59CB0181CFD2F3200D2E1E0 /* Info.plist */,
 				B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */,
-				B59CB03E1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift */,
 				B53BECF51D01240300944663 /* DataManager.swift */,
 				B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */,
 				B53BED711D012C7100944663 /* Constants.swift */,
@@ -278,12 +281,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59CB00F1CFD2F3200D2E1E0 /* GraphviewViewController.swift in Sources */,
-				B59CB03F1CFD373100D2E1E0 /* AddExerciseTypeTableViewController.swift in Sources */,
+				B59CB03F1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift in Sources */,
 				B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */,
 				B53BECF61D01240300944663 /* DataManager.swift in Sources */,
 				B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */,
 				B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */,
-				B59CB00D1CFD2F3200D2E1E0 /* OverviewTableViewController.swift in Sources */,
+				B59CB00D1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift in Sources */,
+				B52C79BE1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift in Sources */,
 				B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */,
 				B53BED721D012C7100944663 /* Constants.swift in Sources */,
 			);

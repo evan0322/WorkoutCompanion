@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
-class AddExerciseTableViewController: UITableViewController {
+class AddExerciseDetailTableViewController: UITableViewController {
+    
+    var exercise:Exercise!
     
     var exerciseDataTypes = ["Name","Weights","Sets","Reps","Date"]
 
