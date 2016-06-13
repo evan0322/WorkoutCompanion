@@ -66,11 +66,23 @@ class FirstViewController: UITableViewController {
                 print("cannot store exercise")
                 return
             }
+            
+            let dataDict = ["date":"testData","name":"testName","reps":"testReps","sets":"testSets","weights":"testWeits"]
+            
+            
+            guard self.manager.saveExerciseData(dataDict, exerciseName: text) else {
+                print("cannot store exercise")
+                return
+            }
+            
             guard let retrievedExercises = self.manager.getExerciseList() else {
                 return
             }
             self.exercises = retrievedExercises
-            print(self.exercises)
+            print(self.exercises[0].exerciseData)
+            
+            
+            
             self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alertAction) in

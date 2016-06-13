@@ -40,8 +40,11 @@ class DataManager {
                     return false
                 }
                 if name as! String == exerciseName {
-                    exercise.ExerciseData = [exerciseData]
                     exerciseData.exercise = exercise
+                    
+                    
+                    let datas = exercise.mutableOrderedSetValueForKey("exerciseData")
+                    datas.insertObject(exerciseData, atIndex: 0)
                     try managedContext.save()
                 }
             }
@@ -98,8 +101,24 @@ class DataManager {
             return nil
         }
     }
-    
-    
+//    
+//    func saveExerciseData(dataDict: Dictionary<String, AnyObject>, exerciseObject:NSManagedObject) -> Bool{
+//        guard let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.ExerciseData.rawValue, inManagedObjectContext: managedContext) else {
+//            return false
+//        }
+//        let managedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
+//        for (key, data) in dataDict {
+//            managedObject.setValue(data, forKey: key)
+//        }
+//        var excerciseData = exerciseObject
+//        do{
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save \(error), \(error.userInfo)")
+//            return false
+//        }
+//        return true
+//    }
     
     
     

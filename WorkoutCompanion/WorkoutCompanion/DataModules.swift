@@ -13,7 +13,7 @@ import Foundation
 
 class Exercise: NSManagedObject {
     @NSManaged var name: String
-    @NSManaged var ExerciseData: NSSet
+    @NSManaged var exerciseData: NSSet
 }
 
 class ExerciseData: NSManagedObject {
