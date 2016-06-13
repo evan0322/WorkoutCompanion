@@ -41,8 +41,6 @@ class DataManager {
                 }
                 if name as! String == exerciseName {
                     exerciseData.exercise = exercise
-                    
-                    
                     let datas = exercise.mutableOrderedSetValueForKey("exerciseData")
                     datas.insertObject(exerciseData, atIndex: 0)
                     try managedContext.save()

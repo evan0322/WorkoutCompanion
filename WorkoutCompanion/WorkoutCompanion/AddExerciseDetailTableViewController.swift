@@ -14,8 +14,10 @@ class AddExerciseDetailTableViewController: UITableViewController {
     var exercise:Exercise!
     
     var exerciseDataTypes = ["Name","Weights","Sets","Reps","Date"]
-
-
+    lazy var context: NSManagedObjectContext = {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return appDelegate.managedObjectContext
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,12 +63,16 @@ class AddExerciseDetailTableViewController: UITableViewController {
     
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true) { () -> Void in}
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         let totalDataTypes = exerciseDataTypes.count
-        var dataDict=[String:String]()
+        guard let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.ExerciseData.rawValue, inManagedObjectContext:context) else {
+            return
+        }
+        let exerciseDetail = ExerciseData(entity: entity, insertIntoManagedObjectContext:self.context)
+        
         for i in 0...totalDataTypes-1{
             let indexPath = NSIndexPath(forRow:i, inSection:0)
             let cell = self.tableView.cellForRowAtIndexPath(indexPath)
@@ -83,12 +89,18 @@ class AddExerciseDetailTableViewController: UITableViewController {
                 })
                 alert.addAction(cancelAction)
                 alert.addAction(confirmAction)
-                presentViewController(alert, animated: true, completion: { () -> Void in
-                })
+                presentViewController(alert, animated: true, completion:nil)
                 return
             }
-            dataDict[exerciseDataTypes[i]]=textLabelData
-  
+            exerciseDetail.setValue(textLabelData, forKey: exerciseDataTypes[i])
+        }
+        exerciseDetail.exercise = exercise
+        let exerciseDetails = exercise.mutableOrderedSetValueForKey("exerciseData")
+        exerciseDetails.insertObject(exerciseDetail, atIndex: 0)
+        do {
+            try self.context.save()
+        } catch let error as NSError {
+            print("Error saving movie \(error.localizedDescription)")
         }
 }
 

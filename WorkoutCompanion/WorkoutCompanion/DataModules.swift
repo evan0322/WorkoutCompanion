@@ -17,7 +17,7 @@ class Exercise: NSManagedObject {
 }
 
 class ExerciseData: NSManagedObject {
-    @NSManaged var data: String
+    @NSManaged var date: String
     @NSManaged var name: String
     @NSManaged var reps: String
     @NSManaged var sets: String
