@@ -11,10 +11,6 @@ import CoreData
 
 class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    var exercises = [Exercise]()
-    var exerciseNames = [String]()
-    let manager = DataManager()
-    
     lazy var context: NSManagedObjectContext = {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         return appDelegate.managedObjectContext
@@ -34,11 +30,6 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         } catch let error as NSError {
             print("Unable to perform fetch: \(error.localizedDescription)")
         }
-        
-        guard let retrievedExercises = manager.getExerciseList() else {
-            return
-        }
-        exercises = retrievedExercises
     }
     
     override func didReceiveMemoryWarning() {

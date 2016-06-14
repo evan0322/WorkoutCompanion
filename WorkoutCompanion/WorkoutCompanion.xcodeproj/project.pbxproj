@@ -10,7 +10,6 @@
 		B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5120C271D0B0E9F00B216A7 /* DataModules.swift */; };
 		B52C79BE1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */; };
 		B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */; };
-		B53BECF61D01240300944663 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF51D01240300944663 /* DataManager.swift */; };
 		B53BED721D012C7100944663 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BED711D012C7100944663 /* Constants.swift */; };
 		B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */; };
 		B59CB00D1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00C1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift */; };
@@ -45,7 +44,6 @@
 		B5120C271D0B0E9F00B216A7 /* DataModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
 		B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDetailTableViewController.swift; sourceTree = "<group>"; };
 		B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		B53BECF51D01240300944663 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Manager/DataManager.swift; sourceTree = "<group>"; };
 		B53BED711D012C7100944663 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B59CB0071CFD2F3200D2E1E0 /* WorkoutCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				B59CB0151CFD2F3200D2E1E0 /* LaunchScreen.storyboard */,
 				B59CB0181CFD2F3200D2E1E0 /* Info.plist */,
 				B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */,
-				B53BECF51D01240300944663 /* DataManager.swift */,
 				B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */,
 				B53BED711D012C7100944663 /* Constants.swift */,
 				B5120C271D0B0E9F00B216A7 /* DataModules.swift */,
@@ -283,7 +280,6 @@
 				B59CB00F1CFD2F3200D2E1E0 /* GraphviewViewController.swift in Sources */,
 				B59CB03F1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift in Sources */,
 				B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */,
-				B53BECF61D01240300944663 /* DataManager.swift in Sources */,
 				B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */,
 				B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */,
 				B59CB00D1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift in Sources */,
