@@ -17,6 +17,11 @@ class ExerciseDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

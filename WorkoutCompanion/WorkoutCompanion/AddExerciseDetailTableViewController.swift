@@ -99,6 +99,7 @@ class AddExerciseDetailTableViewController: UITableViewController {
         exerciseDetails.insertObject(exerciseDetail, atIndex: 0)
         do {
             try self.context.save()
+            self.navigationController!.dismissViewControllerAnimated(true, completion: nil)
         } catch let error as NSError {
             print("Error saving movie \(error.localizedDescription)")
         }
