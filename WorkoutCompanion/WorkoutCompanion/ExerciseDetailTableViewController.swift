@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 class ExerciseDetailTableViewController: UITableViewController {
     
     var exercise:Exercise!
     var exerciseDetails:[ExerciseData]?
+    
+    lazy var context: NSManagedObjectContext = {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return appDelegate.managedObjectContext
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +57,23 @@ class ExerciseDetailTableViewController: UITableViewController {
             addExerciseDetailTableViewController.exercise = exercise
         }
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch editingStyle {
+        case .Delete:
+            let exerciseDetail = exerciseDetails![indexPath.row] 
+            context.deleteObject(exerciseDetail)
+            exerciseDetails?.removeAtIndex(indexPath.row)
+            do {
+                try context.save()
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            } catch let error as NSError {
+                print("Error saving context after delete: \(error.localizedDescription)")
+            }
+        default:break
+        }
+    }
+
  
 
     /*
