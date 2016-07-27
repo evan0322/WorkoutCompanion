@@ -19,6 +19,14 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        self.tableView.backgroundColor = UIColor.blackColor()
+        self.title = "Exercise"
+        self.tabBarController?.tabBar.tintColor = UIColor.whiteColor()
+        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
+        
         //Fetch exercise types
         let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
         let fetchSort = NSSortDescriptor(key:"name", ascending: true)
@@ -56,6 +64,8 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         let exercise = fetchedResultsController.objectAtIndexPath(indexPath) as! Exercise
         let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
         cell.textLabel!.text = exercise.name
+        cell.backgroundColor = UIColor.blackColor()
+        cell.tintColor = UIColor.whiteColor()
         return cell
     }
     

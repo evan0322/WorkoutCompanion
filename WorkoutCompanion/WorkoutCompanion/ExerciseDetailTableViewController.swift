@@ -23,6 +23,7 @@ class ExerciseDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
         self.tableView.separatorStyle = .None
+        self.tableView.backgroundColor = UIColor.blackColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +49,8 @@ class ExerciseDetailTableViewController: UITableViewController {
 //        }
 //        let detail = details[indexPath.row] as ExerciseData
 //        cell.textLabel!.text = detail.date
+        cell.backgroundColor = UIColor.blackColor()
+        cell.tintColor = UIColor.whiteColor()
         return cell
     }
     
