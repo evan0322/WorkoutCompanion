@@ -65,7 +65,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
         cell.textLabel!.text = exercise.name
         cell.backgroundColor = UIColor.blackColor()
-        cell.tintColor = UIColor.whiteColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
         return cell
     }
     

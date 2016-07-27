@@ -10,7 +10,13 @@ import UIKit
 
 class CardTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cardTitleLabel: UILabel!
+    @IBOutlet weak var cardTitleView: UIView!
+    @IBOutlet weak var cardSectionsView: UIView!
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var cardSecondSectionLabel: UILabel!
+    @IBOutlet weak var cardThirdSectionLabel: UILabel!
+    @IBOutlet weak var cardFirstSectionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,11 +26,13 @@ class CardTableViewCell: UITableViewCell {
         cardView.layer.shadowOffset = CGSizeMake(0, 5);
         cardView.layer.shadowOpacity = 1;
         cardView.layer.shadowRadius = 1.0;
+        cardTitleView.backgroundColor = UIColor.lightGrayColor()
+        cardSectionsView.backgroundColor = UIColor.lightGrayColor()
         
         
-        var border = CALayer()
-        border.backgroundColor = UIColor.redColor().CGColor
-        border.frame = CGRect(x: 0, y: 0, width: cardView.frame.width, height: 0.5)
+        let border = CALayer()
+        border.backgroundColor = UIColor.darkGrayColor().CGColor
+        border.frame = CGRect(x: 10, y: cardTitleView.frame.height, width: cardTitleView.frame.width-10, height: 0.5)
         
         cardView.layer.addSublayer(border)
     }

@@ -43,12 +43,16 @@ class ExerciseDetailTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cardTableViewCell", forIndexPath: indexPath)
-//        guard let details = exerciseDetails else {
-//            return cell
-//        }
-//        let detail = details[indexPath.row] as ExerciseData
+        let cell : CardTableViewCell = tableView.dequeueReusableCellWithIdentifier("cardTableViewCell", forIndexPath: indexPath) as! CardTableViewCell
+        guard let details = exerciseDetails else {
+            return cell
+        }
 //        cell.textLabel!.text = detail.date
+        let detail = details[indexPath.row] as ExerciseData
+        cell.cardTitleLabel.text = exercise.name
+        cell.cardFirstSectionLabel.text = "\(detail.sets) Sets"
+        cell.cardSecondSectionLabel.text = "\(detail.reps) Reps"
+        cell.cardThirdSectionLabel.text = "\(detail.sets) Pounds"
         cell.backgroundColor = UIColor.blackColor()
         cell.tintColor = UIColor.whiteColor()
         return cell
