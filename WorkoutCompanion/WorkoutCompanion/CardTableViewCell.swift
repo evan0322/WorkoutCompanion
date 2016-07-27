@@ -20,6 +20,13 @@ class CardTableViewCell: UITableViewCell {
         cardView.layer.shadowOffset = CGSizeMake(0, 5);
         cardView.layer.shadowOpacity = 1;
         cardView.layer.shadowRadius = 1.0;
+        
+        
+        var border = CALayer()
+        border.backgroundColor = UIColor.redColor().CGColor
+        border.frame = CGRect(x: 0, y: 0, width: cardView.frame.width, height: 0.5)
+        
+        cardView.layer.addSublayer(border)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
