@@ -22,6 +22,7 @@ class ExerciseDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
+        self.tableView.separatorStyle = .None
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,13 +42,17 @@ class ExerciseDetailTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("detailListCell", forIndexPath: indexPath)
-        guard let details = exerciseDetails else {
-            return cell
-        }
-        let detail = details[indexPath.row] as ExerciseData
-        cell.textLabel!.text = detail.date
+        let cell = tableView.dequeueReusableCellWithIdentifier("cardTableViewCell", forIndexPath: indexPath)
+//        guard let details = exerciseDetails else {
+//            return cell
+//        }
+//        let detail = details[indexPath.row] as ExerciseData
+//        cell.textLabel!.text = detail.date
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 200;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

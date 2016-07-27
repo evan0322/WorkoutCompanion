@@ -98,8 +98,8 @@ class AddExerciseDetailTableViewController: UITableViewController {
         } catch let error as NSError {
             print("Error saving movie \(error.localizedDescription)")
         }
-        let parentController = self.navigationController!.presentingViewController as! UITableViewController
-        parentController.tableView.reloadData()
+//        let parentController = self.navigationController!.presentingViewController as! UITableViewController
+//        parentController.tableView.reloadData()
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }
