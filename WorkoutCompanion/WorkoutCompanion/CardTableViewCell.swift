@@ -10,6 +10,9 @@ import UIKit
 
 class CardTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var cardThirdSectionView: UIView!
+    @IBOutlet weak var cardSecondSectionView: UIView!
+    @IBOutlet weak var cardFirstSectionView: UIView!
     @IBOutlet weak var cardTitleLabel: UILabel!
     @IBOutlet weak var cardTitleView: UIView!
     @IBOutlet weak var cardSectionsView: UIView!

@@ -50,9 +50,9 @@ class ExerciseDetailTableViewController: UITableViewController {
         //        cell.textLabel!.text = detail.date
         let detail = details[indexPath.row] as ExerciseData
         cell.cardTitleLabel.text = exercise.name
-        cell.cardFirstSectionLabel.text = "\(detail.sets) Sets"
-        cell.cardSecondSectionLabel.text = "\(detail.reps) Reps"
-        cell.cardThirdSectionLabel.text = "\(detail.sets) Pounds"
+        cell.cardFirstSectionLabel.text = "\(detail.sets)"
+        cell.cardSecondSectionLabel.text = "\(detail.reps)"
+        cell.cardThirdSectionLabel.text = "\(detail.sets)"
         cell.backgroundColor = UIColor.blackColor()
         cell.tintColor = Constants.themeColorWhite
         
