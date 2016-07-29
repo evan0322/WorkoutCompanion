@@ -18,43 +18,44 @@ class ExerciseDetailTableViewController: UITableViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         return appDelegate.managedObjectContext
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
         self.tableView.separatorStyle = .None
         self.tableView.backgroundColor = UIColor.blackColor()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let details = exerciseDetails else {
             return 0
         }
         return details.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : CardTableViewCell = tableView.dequeueReusableCellWithIdentifier("cardTableViewCell", forIndexPath: indexPath) as! CardTableViewCell
         guard let details = exerciseDetails else {
             return cell
         }
-//        cell.textLabel!.text = detail.date
+        //        cell.textLabel!.text = detail.date
         let detail = details[indexPath.row] as ExerciseData
         cell.cardTitleLabel.text = exercise.name
         cell.cardFirstSectionLabel.text = "\(detail.sets) Sets"
         cell.cardSecondSectionLabel.text = "\(detail.reps) Reps"
         cell.cardThirdSectionLabel.text = "\(detail.sets) Pounds"
         cell.backgroundColor = UIColor.blackColor()
-        cell.tintColor = UIColor.whiteColor()
+        cell.tintColor = Constants.themeColorWhite
+        
         return cell
     }
     
@@ -73,7 +74,7 @@ class ExerciseDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
-            let exerciseDetail = exerciseDetails![indexPath.row] 
+            let exerciseDetail = exerciseDetails![indexPath.row]
             context.deleteObject(exerciseDetail)
             exerciseDetails?.removeAtIndex(indexPath.row)
             do {
@@ -85,52 +86,52 @@ class ExerciseDetailTableViewController: UITableViewController {
         default:break
         }
     }
-
- 
-
+    
+    
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
