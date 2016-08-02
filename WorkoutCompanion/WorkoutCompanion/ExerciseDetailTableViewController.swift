@@ -23,6 +23,9 @@ class ExerciseDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
+        exerciseDetails = exerciseDetails!.sort(){ data1,data2 in
+            return data1.date.compare(data2.date) == NSComparisonResult.OrderedDescending
+        }
         self.tableView.separatorStyle = .None
         self.tableView.backgroundColor = Constants.themeColorAlabuster
         self.title = exercise.name
@@ -56,9 +59,10 @@ class ExerciseDetailTableViewController: UITableViewController {
         cell.cardSecondSectionLabel.text = "\(String(detail.reps))"
         cell.cardThirdSectionLabel.text = "\(String(detail.weight))"
         cell.cardDateLabel.text = detail.date.toString()
-        cell.cardTitleLabel.text = "Total Volume: \(Int(detail.sets)*Int(detail.reps))"
+        cell.cardTitleLabel.text = "Total Volume: \(Int(detail.sets)*Int(detail.reps)*Int(detail.weight))"
         cell.backgroundColor = UIColor.clearColor()
         cell.tintColor = Constants.themeColorWhite
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell
     }
@@ -97,7 +101,7 @@ class ExerciseDetailTableViewController: UITableViewController {
         let alert = SCLAlertView(appearance: appearance)
         let repsInput = alert.addTextField("Reps")
         let setsInput = alert.addTextField("Sets")
-        let weightInput = alert.addTextField("Weight")
+        let weightInput = alert.addTextField("Weight Per Set")
         repsInput.keyboardType = UIKeyboardType.NumberPad
         setsInput.keyboardType = UIKeyboardType.NumberPad
         weightInput.keyboardType = UIKeyboardType.NumberPad
