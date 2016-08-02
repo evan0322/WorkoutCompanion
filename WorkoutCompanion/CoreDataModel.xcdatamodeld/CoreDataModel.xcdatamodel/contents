@@ -5,15 +5,15 @@
         <relationship name="exerciseData" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ExerciseData" inverseName="exercise" inverseEntity="ExerciseData" syncable="YES"/>
     </entity>
     <entity name="ExerciseData" representedClassName=".ExerciseData" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="reps" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sets" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="weights" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reps" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="sets" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="exerciseData" inverseEntity="Exercise" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ExerciseData" positionX="135" positionY="18" width="128" height="133"/>
         <element name="Exercise" positionX="-135" positionY="72" width="128" height="73"/>
+        <element name="ExerciseData" positionX="135" positionY="18" width="128" height="135"/>
     </elements>
 </model>

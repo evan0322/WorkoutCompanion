@@ -22,7 +22,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         self.navigationController!.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        self.tableView.backgroundColor = UIColor.blackColor()
+        self.tableView.backgroundColor = Constants.themeColorAlabuster
         self.title = "Exercise"
         self.tabBarController?.tabBar.tintColor = UIColor.whiteColor()
         self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
@@ -64,13 +64,13 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         let exercise = fetchedResultsController.objectAtIndexPath(indexPath) as! Exercise
         let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
         cell.textLabel!.text = exercise.name
-        cell.backgroundColor = UIColor.blackColor()
-        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.clearColor()
         return cell
     }
     
     @IBAction func addButtonPressed(sender: AnyObject) {
         let addExerciseController = UIAlertController(title: "Add an exercise", message: "Enter the name", preferredStyle: .Alert)
+        addExerciseController.view.tintColor = Constants.themeColorBlack
         addExerciseController.addTextFieldWithConfigurationHandler { (textField) in
             textField.placeholder = "name"
             textField.clearButtonMode = .WhileEditing;

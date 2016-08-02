@@ -17,10 +17,10 @@ class Exercise: NSManagedObject {
 }
 
 class ExerciseData: NSManagedObject {
-    @NSManaged var date: String
+    @NSManaged var date: NSDate
     @NSManaged var name: String
-    @NSManaged var reps: String
-    @NSManaged var sets: String
-    @NSManaged var weights: String
+    @NSManaged var reps: Int64
+    @NSManaged var sets: Int64
+    @NSManaged var weight: Int64
     @NSManaged var exercise: Exercise
 }

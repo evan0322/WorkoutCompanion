@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BB6B37D2EBE7E317536726D /* Pods_WorkoutCompanion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1589546EA0AC85D7462BB404 /* Pods_WorkoutCompanion.framework */; };
+		71CC7052243827E401335122 /* Pods_WorkoutCompanionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19421D90B953C826199A22AF /* Pods_WorkoutCompanionTests.framework */; };
 		B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5120C271D0B0E9F00B216A7 /* DataModules.swift */; };
 		B52C79BE1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */; };
 		B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */; };
@@ -21,7 +23,9 @@
 		B59CB02D1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB02C1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift */; };
 		B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */; };
 		B59CB03F1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03E1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift */; };
+		B5A9495D1D4BE6370093B301 /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9495C1D4BE6370093B301 /* Swizzling.swift */; };
 		B5CBE92D1D484B970056FACC /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBE92C1D484B970056FACC /* CardTableViewCell.swift */; };
+		FAE90208113104269BA330C6 /* Pods_WorkoutCompanionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4599B230B2D05E6765DD5C95 /* Pods_WorkoutCompanionUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		009CCC7BB3D408C2D7086586 /* Pods-WorkoutCompanionUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutCompanionUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutCompanionUITests/Pods-WorkoutCompanionUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1589546EA0AC85D7462BB404 /* Pods_WorkoutCompanion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutCompanion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19421D90B953C826199A22AF /* Pods_WorkoutCompanionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutCompanionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4599B230B2D05E6765DD5C95 /* Pods_WorkoutCompanionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutCompanionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56006F990C7CDD8BF9C553F3 /* Pods-WorkoutCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutCompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutCompanion/Pods-WorkoutCompanion.debug.xcconfig"; sourceTree = "<group>"; };
+		61C7411861D975CDF958A521 /* Pods-WorkoutCompanionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutCompanionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutCompanionTests/Pods-WorkoutCompanionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B5120C271D0B0E9F00B216A7 /* DataModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
 		B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDetailTableViewController.swift; sourceTree = "<group>"; };
 		B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -62,7 +72,11 @@
 		B59CB02E1CFD2F3200D2E1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B59CB03E1CFD373100D2E1E0 /* AddExerciseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseDetailTableViewController.swift; sourceTree = "<group>"; };
+		B5A9495C1D4BE6370093B301 /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
 		B5CBE92C1D484B970056FACC /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+		B8655585818F0733175C353D /* Pods-WorkoutCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutCompanion/Pods-WorkoutCompanion.release.xcconfig"; sourceTree = "<group>"; };
+		D3111F5E3B8FF64ABB6B1122 /* Pods-WorkoutCompanionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutCompanionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutCompanionTests/Pods-WorkoutCompanionTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9B2B64A49A0854F642EBD29 /* Pods-WorkoutCompanionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutCompanionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutCompanionUITests/Pods-WorkoutCompanionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BB6B37D2EBE7E317536726D /* Pods_WorkoutCompanion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CC7052243827E401335122 /* Pods_WorkoutCompanionTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +100,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE90208113104269BA330C6 /* Pods_WorkoutCompanionUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		436B2EF67BF633EA2FF6309B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1589546EA0AC85D7462BB404 /* Pods_WorkoutCompanion.framework */,
+				19421D90B953C826199A22AF /* Pods_WorkoutCompanionTests.framework */,
+				4599B230B2D05E6765DD5C95 /* Pods_WorkoutCompanionUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B59CAFFE1CFD2F3200D2E1E0 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +124,8 @@
 				B59CB0201CFD2F3200D2E1E0 /* WorkoutCompanionTests */,
 				B59CB02B1CFD2F3200D2E1E0 /* WorkoutCompanionUITests */,
 				B59CB0081CFD2F3200D2E1E0 /* Products */,
+				DCB8BA2E32CD07F379CDA7BE /* Pods */,
+				436B2EF67BF633EA2FF6309B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +156,7 @@
 				B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */,
 				B53BED711D012C7100944663 /* Constants.swift */,
 				B5120C271D0B0E9F00B216A7 /* DataModules.swift */,
+				B5A9495C1D4BE6370093B301 /* Swizzling.swift */,
 			);
 			path = WorkoutCompanion;
 			sourceTree = "<group>";
@@ -157,6 +187,19 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		DCB8BA2E32CD07F379CDA7BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56006F990C7CDD8BF9C553F3 /* Pods-WorkoutCompanion.debug.xcconfig */,
+				B8655585818F0733175C353D /* Pods-WorkoutCompanion.release.xcconfig */,
+				61C7411861D975CDF958A521 /* Pods-WorkoutCompanionTests.debug.xcconfig */,
+				D3111F5E3B8FF64ABB6B1122 /* Pods-WorkoutCompanionTests.release.xcconfig */,
+				E9B2B64A49A0854F642EBD29 /* Pods-WorkoutCompanionUITests.debug.xcconfig */,
+				009CCC7BB3D408C2D7086586 /* Pods-WorkoutCompanionUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B59CB0311CFD2F3200D2E1E0 /* Build configuration list for PBXNativeTarget "WorkoutCompanion" */;
 			buildPhases = (
+				80DF404FAA0364CDEE2EA3BE /* [CP] Check Pods Manifest.lock */,
 				B59CB0031CFD2F3200D2E1E0 /* Sources */,
 				B59CB0041CFD2F3200D2E1E0 /* Frameworks */,
 				B59CB0051CFD2F3200D2E1E0 /* Resources */,
+				60339C7EFC8E992DA83DBA61 /* [CP] Embed Pods Frameworks */,
+				D6CA9B114E6F550A757981FB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,9 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B59CB0341CFD2F3200D2E1E0 /* Build configuration list for PBXNativeTarget "WorkoutCompanionTests" */;
 			buildPhases = (
+				B75A0703FA4464056E555031 /* [CP] Check Pods Manifest.lock */,
 				B59CB0191CFD2F3200D2E1E0 /* Sources */,
 				B59CB01A1CFD2F3200D2E1E0 /* Frameworks */,
 				B59CB01B1CFD2F3200D2E1E0 /* Resources */,
+				4DA66B20338334847089B163 /* [CP] Embed Pods Frameworks */,
+				CDB558A64D9939D8C31D0904 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,9 +248,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B59CB0371CFD2F3200D2E1E0 /* Build configuration list for PBXNativeTarget "WorkoutCompanionUITests" */;
 			buildPhases = (
+				E965F51CE71B73792CFA36F9 /* [CP] Check Pods Manifest.lock */,
 				B59CB0241CFD2F3200D2E1E0 /* Sources */,
 				B59CB0251CFD2F3200D2E1E0 /* Frameworks */,
 				B59CB0261CFD2F3200D2E1E0 /* Resources */,
+				3E3353517226193CAAA6B52A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,6 +334,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E3353517226193CAAA6B52A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutCompanionUITests/Pods-WorkoutCompanionUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4DA66B20338334847089B163 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutCompanionTests/Pods-WorkoutCompanionTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60339C7EFC8E992DA83DBA61 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutCompanion/Pods-WorkoutCompanion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80DF404FAA0364CDEE2EA3BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B75A0703FA4464056E555031 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CDB558A64D9939D8C31D0904 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutCompanionTests/Pods-WorkoutCompanionTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6CA9B114E6F550A757981FB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkoutCompanion/Pods-WorkoutCompanion-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E965F51CE71B73792CFA36F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B59CB0031CFD2F3200D2E1E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -295,6 +469,7 @@
 				B5120C281D0B0E9F00B216A7 /* DataModules.swift in Sources */,
 				B5CBE92D1D484B970056FACC /* CardTableViewCell.swift in Sources */,
 				B59CB00D1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift in Sources */,
+				B5A9495D1D4BE6370093B301 /* Swizzling.swift in Sources */,
 				B52C79BE1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift in Sources */,
 				B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */,
 				B53BED721D012C7100944663 /* Constants.swift in Sources */,
@@ -437,6 +612,7 @@
 		};
 		B59CB0321CFD2F3200D2E1E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56006F990C7CDD8BF9C553F3 /* Pods-WorkoutCompanion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WorkoutCompanion/Info.plist;
@@ -448,6 +624,7 @@
 		};
 		B59CB0331CFD2F3200D2E1E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8655585818F0733175C353D /* Pods-WorkoutCompanion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WorkoutCompanion/Info.plist;
@@ -459,6 +636,7 @@
 		};
 		B59CB0351CFD2F3200D2E1E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61C7411861D975CDF958A521 /* Pods-WorkoutCompanionTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = WorkoutCompanionTests/Info.plist;
@@ -471,6 +649,7 @@
 		};
 		B59CB0361CFD2F3200D2E1E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3111F5E3B8FF64ABB6B1122 /* Pods-WorkoutCompanionTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = WorkoutCompanionTests/Info.plist;
@@ -483,6 +662,7 @@
 		};
 		B59CB0381CFD2F3200D2E1E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9B2B64A49A0854F642EBD29 /* Pods-WorkoutCompanionUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = WorkoutCompanionUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -495,6 +675,7 @@
 		};
 		B59CB0391CFD2F3200D2E1E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 009CCC7BB3D408C2D7086586 /* Pods-WorkoutCompanionUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = WorkoutCompanionUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
