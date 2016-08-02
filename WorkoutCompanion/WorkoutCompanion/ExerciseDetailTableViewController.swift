@@ -67,14 +67,6 @@ class ExerciseDetailTableViewController: UITableViewController {
         return 200;
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "addDetailSegue") {
-            let nav = segue.destinationViewController as! UINavigationController
-            let addExerciseDetailTableViewController =  nav.topViewController as! AddExerciseDetailTableViewController
-            addExerciseDetailTableViewController.exercise = exercise
-        }
-    }
-    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
