@@ -54,12 +54,11 @@ class ExerciseDetailTableViewController: UITableViewController {
         }
         //        cell.textLabel!.text = detail.date
         let detail = details[indexPath.row] as ExerciseData
-        cell.cardTitleLabel.text = exercise.name
         cell.cardFirstSectionLabel.text = "\(String(detail.sets))"
         cell.cardSecondSectionLabel.text = "\(String(detail.reps))"
         cell.cardThirdSectionLabel.text = "\(String(detail.weight))"
         cell.cardDateLabel.text = detail.date.toString()
-        cell.cardTitleLabel.text = "Total Volume: \(Int(detail.sets)*Int(detail.reps)*Int(detail.weight))"
+        cell.cardDetailLabel.text = "\(Int(detail.sets)*Int(detail.reps)*Int(detail.weight))"
         cell.backgroundColor = UIColor.clearColor()
         cell.tintColor = Constants.themeColorWhite
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -68,7 +67,7 @@ class ExerciseDetailTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 200;
+        return 140
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

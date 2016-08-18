@@ -19,13 +19,13 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.barStyle = UIBarStyle.Black
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        self.navigationController!.navigationBar.barStyle = UIBarStyle.Default
+        self.navigationController!.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         self.tableView.backgroundColor = Constants.themeColorAlabuster
         self.title = "Exercise"
-        self.tabBarController?.tabBar.tintColor = UIColor.whiteColor()
-        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
+        self.tabBarController?.tabBar.tintColor = UIColor.blackColor()
+        self.tabBarController?.tabBar.barTintColor = UIColor.whiteColor()
         
         //Fetch exercise types
         let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)

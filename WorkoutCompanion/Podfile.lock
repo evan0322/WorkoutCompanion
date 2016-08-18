@@ -1,0 +1,15 @@
+PODS:
+  - SCLAlertView (0.5.9)
+  - ScrollableGraphView (1.2.1)
+
+DEPENDENCIES:
+  - SCLAlertView
+  - ScrollableGraphView
+
+SPEC CHECKSUMS:
+  SCLAlertView: d7c6a48c7d340e60206d4ed0e8ebcbff3b9d2a44
+  ScrollableGraphView: 1eb9a448d04eff270b4a26f7e437b57f056230b7
+
+PODFILE CHECKSUM: 3c0234ffe88df3dcdf4c036c19692fd58583a250
+
+COCOAPODS: 1.0.1

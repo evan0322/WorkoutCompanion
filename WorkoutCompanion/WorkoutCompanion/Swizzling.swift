@@ -107,25 +107,11 @@ extension NSDate
     func toString() -> String {
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Year, .Month, .Day, .Hour, .Minute], fromDate: self)
-        let year = String(components.year)
-        let month = String(components.month)
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        let months = dateFormatter.shortMonthSymbols
+        let monthSymbol = months[components.month-1] 
         let day = String(components.day)
-        return "\(year)-\(month)-\(day)"
+        return "\(monthSymbol) \(day)"
     }
 }
 
-//extension String
-//{
-//    func toDate() -> NSDate {
-//        let dateArray:[String] = self.componentsSeparatedByString("-")
-//        let dateComponents = NSDateComponents()
-//        dateComponents.year = Int(dateArray[0])!
-//        dateComponents.month = Int(dateArray[1])!
-//        dateComponents.day = Int(dateArray[2])!
-//        dateComponents.hour = Int(dateArray[3])!
-//        dateComponents.minute = Int(dateArray[4])!
-//        // Create date from components
-//        let userCalendar = NSCalendar.currentCalendar() // user calendar
-//        return userCalendar.dateFromComponents(dateComponents)!
-//    }
-//}

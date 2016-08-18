@@ -21,6 +21,7 @@ class CardTableViewCell: UITableViewCell {
     @IBOutlet weak var cardThirdSectionLabel: UILabel!
     @IBOutlet weak var cardFirstSectionLabel: UILabel!
     @IBOutlet var cardDateLabel: UILabel!
+    @IBOutlet var cardDetailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,10 +31,29 @@ class CardTableViewCell: UITableViewCell {
         
         cardView.addDropShadowToView(cardView)
         
-        cardView.backgroundColor = Constants.themeColorWhite
+        cardView.backgroundColor = Constants.themeColorBlack
+        
+        cardTitleLabel.textColor = Constants.themeColorWhite
+        cardFirstSectionLabel.textColor = Constants.themeColorWhite
+        cardSecondSectionLabel.textColor = Constants.themeColorWhite
+        cardThirdSectionLabel.textColor = Constants.themeColorWhite
+        cardDetailLabel.textColor = Constants.themeColorWhite
+
+        
         cardTitleView.backgroundColor = UIColor.clearColor()
         cardSectionsView.backgroundColor = UIColor.clearColor()
-        cardTitleView.addBorder(edges:[.Bottom], colour: Constants.themeColorBlack, thickness: 1) // All except Top, red, thickness 3
+        cardTitleView.addBorder(edges:[.Bottom], colour: Constants.themeColorAlabuster, thickness: 1) // All except Top, red, thickness 3
+        
+        //Add gradient to the background
+        let colorTop =  Constants.themeColorBlack
+        let colorBottom = UIColor.darkGrayColor()
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [ colorTop, colorBottom]
+        gradientLayer.locations = [ 0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        
+        self.layer.addSublayer(gradientLayer)
         
     }
     
