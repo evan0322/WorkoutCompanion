@@ -83,6 +83,9 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         
         
         if let exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData] {
+            if exerciseDetails.count < 1 {
+                return cell
+            }
             let data: [Double] = exerciseDetails.map{ exerciseDetail in
                 return Double(exerciseDetail.reps*exerciseDetail.sets*exerciseDetail.weight)
             }
