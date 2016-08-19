@@ -54,11 +54,11 @@ class ExerciseDetailTableViewController: UITableViewController {
         }
         //        cell.textLabel!.text = detail.date
         let detail = details[indexPath.row] as ExerciseData
-        cell.cardFirstSectionLabel.text = "\(String(detail.sets))"
-        cell.cardSecondSectionLabel.text = "\(String(detail.reps))"
-        cell.cardThirdSectionLabel.text = "\(String(detail.weight))"
-        cell.cardDateLabel.text = detail.date.toString()
-        cell.cardDetailLabel.text = "\(Int(detail.sets)*Int(detail.reps)*Int(detail.weight))"
+        cell.cardFirstSectionLabel!.text = "\(String(detail.sets))"
+        cell.cardSecondSectionLabel!.text = "\(String(detail.reps))"
+        cell.cardThirdSectionLabel!.text = "\(String(detail.weight))"
+        cell.cardDateLabel!.text = detail.date.toString()
+        cell.cardDetailLabel!.text = "\(Int(detail.sets)*Int(detail.reps)*Int(detail.weight))"
         cell.backgroundColor = UIColor.clearColor()
         cell.tintColor = Constants.themeColorWhite
         cell.selectionStyle = UITableViewCellSelectionStyle.None

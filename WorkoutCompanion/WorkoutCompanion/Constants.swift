@@ -23,7 +23,8 @@ struct Constants{
     static let themeColorCultured = UIColor(red: 251/255, green: 245/255, blue: 243/255, alpha: 1.0)
     static let themeColorAlabuster = UIColor(red: 236/255, green: 235/255, blue: 228/255, alpha: 1.0)
     static let themeColorGreenSheen = UIColor(red: 100/255, green: 182/255, blue: 172/255, alpha: 1.0)
-    
+    static let themeColorHarvardCrimson = UIColor(red: 194/255, green: 1/255, blue: 20/255, alpha: 1.0)
+    static let themeColorBackgroundGrey = UIColor(red:0.33, green:0.33, blue:0.33, alpha:1.0)
     
     
 }

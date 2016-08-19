@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ScrollableGraphView
 
 class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
@@ -20,12 +21,20 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.barStyle = UIBarStyle.Default
-        self.navigationController!.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.tintColor = Constants.themeColorHarvardCrimson
+        self.navigationController?.navigationBar.barTintColor = Constants.themeColorAlabuster
+        self.navigationController!.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : Constants.themeColorHarvardCrimson
+        ]
         self.tableView.backgroundColor = Constants.themeColorAlabuster
         self.title = "Exercise"
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
+        
+        
+        
         self.tabBarController?.tabBar.tintColor = UIColor.blackColor()
-        self.tabBarController?.tabBar.barTintColor = UIColor.whiteColor()
+        self.tabBarController?.tabBar.barTintColor = Constants.themeColorAlabuster
         
         //Fetch exercise types
         let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
@@ -38,6 +47,10 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         } catch let error as NSError {
             print("Unable to perform fetch: \(error.localizedDescription)")
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,10 +75,31 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let exercise = fetchedResultsController.objectAtIndexPath(indexPath) as! Exercise
-        let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
-        cell.textLabel!.text = exercise.name
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath) as! CardTableViewCell
+        cell.cardTitleLabel!.text = exercise.name
         cell.backgroundColor = UIColor.clearColor()
+        cell.cardDateLabel?.textColor = UIColor.lightGrayColor()
+        
+        
+        if let exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData] {
+            let data: [Double] = exerciseDetails.map{ exerciseDetail in
+                return Double(exerciseDetail.reps*exerciseDetail.sets*exerciseDetail.weight)
+            }
+            let labels: [String] = exerciseDetails.map{ exerciseDetail in
+                return exerciseDetail.date.toString()
+            }
+            cell.cardGraphView!.setData(data, withLabels: labels)
+            cell.cardGraphView!.rangeMax = data.maxElement()!
+            
+        } else {
+        
+        }
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 200
     }
     
     @IBAction func addButtonPressed(sender: AnyObject) {
@@ -146,6 +180,12 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             }
         default:break
         }
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        //Disable swap to delete function as it will confuse the user with the graph view
+        if self.tableView.editing {return .Delete}
+        return .None
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
