@@ -28,7 +28,6 @@ class UIManager: NSObject {
             noDataLabel.attributedText   =  NSAttributedString(string: "No Data", attributes: attrs)
             noDataLabel.textAlignment    = .Center
             tableView.backgroundView = noDataLabel
-            tableView.separatorStyle = .None
             
 
         } else {

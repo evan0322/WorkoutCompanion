@@ -28,6 +28,8 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             NSForegroundColorAttributeName : Constants.themeColorHarvardCrimson
         ]
         self.tableView.backgroundColor = Constants.themeColorAlabuster
+        self.tableView.separatorStyle = .None
+        
         self.title = "Exercise"
         
         navigationItem.leftBarButtonItem = editButtonItem()

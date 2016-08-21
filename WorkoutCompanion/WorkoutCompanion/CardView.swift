@@ -14,7 +14,7 @@ class CardView: UIView {
     @IBInspectable var cornerRadius: CGFloat = 5
     
     @IBInspectable var shadowOffsetWidth: Int = 0
-    @IBInspectable var shadowOffsetHeight: Int = 3
+    @IBInspectable var shadowOffsetHeight: Int = 0
     @IBInspectable var shadowColor: UIColor? = UIColor.blackColor()
     @IBInspectable var shadowOpacity: Float = 0.5
     
