@@ -70,8 +70,10 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         }
         if sectionData.numberOfObjects < 1 {
             UIManager.sharedInstance().handleNoDataLabel(true, forTableView: self.tableView)
+            self.navigationItem.leftBarButtonItem = nil
         } else {
             UIManager.sharedInstance().handleNoDataLabel(false, forTableView: self.tableView)
+            self.navigationItem.leftBarButtonItem = editButtonItem()
         }
         return sectionData.numberOfObjects
     }
@@ -196,6 +198,8 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         switch type {
         case .Insert:
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+            self.navigationController?.setEditing(false, animated: true)
+            self.tableView!.setEditing(false, animated: true)
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
         default: break
