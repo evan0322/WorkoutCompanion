@@ -23,7 +23,7 @@ class CardTableViewCell: UITableViewCell {
     @IBOutlet weak var cardFirstSectionLabel: UILabel?
     @IBOutlet var cardDateLabel: UILabel?
     @IBOutlet var cardDetailLabel: UILabel?
-    @IBOutlet var cardGraphView: ScrollableGraphView?
+    @IBOutlet var cardGraphView: UIView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,34 +42,6 @@ class CardTableViewCell: UITableViewCell {
         cardTitleView?.backgroundColor = UIColor.clearColor()
         cardSectionsView?.backgroundColor = UIColor.clearColor()
         cardTitleView?.addBorder(edges:[.Bottom], colour: Constants.themeColorAlabuster, thickness: 1) // All except Top, red, thickness 3
-        
-        
-        
-        cardGraphView?.backgroundFillColor = Constants.themeColorHarvardCrimson
-        
-        cardGraphView?.rangeMax = 50
-        
-        cardGraphView?.lineColor = UIColor.redColor()
-        cardGraphView?.lineWidth = 1
-        cardGraphView?.lineColor = Constants.themeColorAlabuster
-        cardGraphView?.lineStyle = ScrollableGraphViewLineStyle.Smooth
-        
-        cardGraphView?.leftmostPointPadding = CGFloat(30)
-
-        
-        
-        cardGraphView?.dataPointSpacing = 60
-        cardGraphView?.dataPointSize = 2
-        cardGraphView?.dataPointFillColor = Constants.themeColorAlabuster
-        
-        cardGraphView?.referenceLineLabelFont = UIFont.boldSystemFontOfSize(8)
-        cardGraphView?.referenceLineColor = Constants.themeColorAlabuster.colorWithAlphaComponent(0.2)
-        cardGraphView?.referenceLineLabelColor = Constants.themeColorAlabuster
-        cardGraphView?.dataPointLabelColor = Constants.themeColorAlabuster.colorWithAlphaComponent(0.5)
-        
-        
-
-        
     }
     
     

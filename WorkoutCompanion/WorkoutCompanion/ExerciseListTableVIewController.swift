@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ScrollableGraphView
+import SCLAlertView
 
 class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
@@ -31,10 +32,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         
         navigationItem.leftBarButtonItem = editButtonItem()
         
-        
-        
-        self.tabBarController?.tabBar.tintColor = UIColor.blackColor()
-        self.tabBarController?.tabBar.barTintColor = Constants.themeColorAlabuster
+
         
         //Fetch exercise types
         let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
@@ -70,6 +68,11 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         guard let sectionData = fetchedResultsController.sections?[section] else {
             return 0
         }
+        if sectionData.numberOfObjects < 1 {
+            UIManager.sharedInstance().handleNoDataLabel(true, forTableView: self.tableView)
+        } else {
+            UIManager.sharedInstance().handleNoDataLabel(false, forTableView: self.tableView)
+        }
         return sectionData.numberOfObjects
     }
 
@@ -84,19 +87,26 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         
         if let exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData] {
             if exerciseDetails.count < 1 {
+                for view in cell.cardGraphView!.subviews{
+                    view.removeFromSuperview()
+                }
                 return cell
             }
+            
             let data: [Double] = exerciseDetails.map{ exerciseDetail in
-                return Double(exerciseDetail.reps*exerciseDetail.sets*exerciseDetail.weight)
+                return Double((Double(exerciseDetail.reps)/30+1)*Double(exerciseDetail.weight))
             }
             let labels: [String] = exerciseDetails.map{ exerciseDetail in
                 return exerciseDetail.date.toString()
             }
-            cell.cardGraphView!.setData(data, withLabels: labels)
-            cell.cardGraphView!.rangeMax = data.maxElement()!
             
-        } else {
-        
+            //Generate ScrollableGraphView
+            let graphView = UIManager.sharedInstance().generateScrollableGraphViewViewWithFrame(CGRectMake(0, 0, cell.cardGraphView!.frame.width , cell.cardGraphView!.frame.height), data: data, labels: labels)
+            for view in cell.cardGraphView!.subviews{
+                view.removeFromSuperview()
+            }
+            cell.cardGraphView!.addSubview(graphView)
+            
         }
         return cell
     }
@@ -106,17 +116,30 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
     }
     
     @IBAction func addButtonPressed(sender: AnyObject) {
-        let addExerciseController = UIAlertController(title: "Add an exercise", message: "Enter the name", preferredStyle: .Alert)
-        addExerciseController.view.tintColor = Constants.themeColorBlack
-        addExerciseController.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = "name"
-            textField.clearButtonMode = .WhileEditing;
-        }
-        let confirmAction = UIAlertAction(title: "Ok", style: .Default) { (alertAction) in
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+            contentViewColor:Constants.themeColorAlabuster,
+            showCircularIcon: false,
+            shouldAutoDismiss: false,
+            showCloseButton: false
+        )
+        let alert = SCLAlertView(appearance: appearance)
+        let nameInput = alert.addTextField("Name")
+        
+        var alertViewResponder = SCLAlertViewResponder(alertview: alert)
+        
+        alert.addButton("Add", backgroundColor: Constants.themeColorBlack, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+            //Validate data
+            guard (nameInput.text != "") else{
+                alertViewResponder.setSubTitle("Name cannot be empty")
+                return
+            }
+            
             let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.Exercise.rawValue, inManagedObjectContext: self.context)
             let exercise = Exercise(entity: entity!, insertIntoManagedObjectContext:self.context)
-            let textField = addExerciseController.textFields!.first
-            guard let name = textField?.text else {
+            guard let name = nameInput.text else {
                 return
             }
             exercise.name = name
@@ -125,16 +148,26 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             } catch let error as NSError {
                 print("Error saving movie \(error.localizedDescription)")
             }
+            alert.hideView()
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alertAction) in
-            print("cancel pressed")
+        alert.addButton("Cancel", backgroundColor: Constants.themeColorMadderLake, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+            alert.hideView()
         }
         
-        addExerciseController.addAction(cancelAction)
-        addExerciseController.addAction(confirmAction)
-        presentViewController(addExerciseController, animated:true, completion:nil)
+        alertViewResponder = alert.showTitle(
+            "Add An Exercise", // Title of view
+            subTitle: "Enter the name", // String of view
+            duration: 0.0, // Duration to show before closing automatically, default: 0.0
+            completeText: "Done", // Optional button value, default: ""
+            style: .Success, // Styles - see below.
+            colorStyle: 0xFFFFFF,
+            colorTextButton: 0xFFFFFF
+        )
+        
     }
+    
+    
     @IBAction func deleteButtonPressed(sender: AnyObject) {
         //TODO
     }
@@ -201,6 +234,9 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             // pass data to next view
         }
     }
+    
+    // MARK: - Utility functions
+    
 }
 
 

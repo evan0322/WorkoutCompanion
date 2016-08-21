@@ -44,6 +44,11 @@ class ExerciseDetailTableViewController: UITableViewController {
         guard let details = exerciseDetails else {
             return 0
         }
+        if details.count < 1 {
+            UIManager.sharedInstance().handleNoDataLabel(true, forTableView: self.tableView)
+        } else {
+            UIManager.sharedInstance().handleNoDataLabel(false, forTableView: self.tableView)
+        }
         return details.count
     }
     
@@ -52,13 +57,15 @@ class ExerciseDetailTableViewController: UITableViewController {
         guard let details = exerciseDetails else {
             return cell
         }
-        //        cell.textLabel!.text = detail.date
+        //Caculate One-Rep Max with Epley Formula
         let detail = details[indexPath.row] as ExerciseData
+        let oneRepMax = Int((Double(detail.reps)/30+1)*Double(detail.weight))
+        
         cell.cardFirstSectionLabel!.text = "\(String(detail.sets))"
         cell.cardSecondSectionLabel!.text = "\(String(detail.reps))"
         cell.cardThirdSectionLabel!.text = "\(String(detail.weight))"
         cell.cardDateLabel!.text = detail.date.toString()
-        cell.cardDetailLabel!.text = "\(Int(detail.sets)*Int(detail.reps)*Int(detail.weight))"
+        cell.cardDetailLabel!.text = "\(oneRepMax)"
         cell.backgroundColor = UIColor.clearColor()
         cell.tintColor = Constants.themeColorWhite
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -98,9 +105,9 @@ class ExerciseDetailTableViewController: UITableViewController {
             showCloseButton: false
         )
         let alert = SCLAlertView(appearance: appearance)
-        let repsInput = alert.addTextField("Reps")
-        let setsInput = alert.addTextField("Sets")
-        let weightInput = alert.addTextField("Weight Per Set")
+        let repsInput = alert.addTextField("Reps Per Set")
+        let setsInput = alert.addTextField("Total Sets")
+        let weightInput = alert.addTextField("Weight Per Rep")
         repsInput.keyboardType = UIKeyboardType.NumberPad
         setsInput.keyboardType = UIKeyboardType.NumberPad
         weightInput.keyboardType = UIKeyboardType.NumberPad
