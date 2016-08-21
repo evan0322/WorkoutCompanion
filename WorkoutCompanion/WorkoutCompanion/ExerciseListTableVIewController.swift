@@ -38,7 +38,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         
         //Fetch exercise types
         let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
-        let fetchSort = NSSortDescriptor(key:"name", ascending: true)
+        let fetchSort = NSSortDescriptor(key:"createDate", ascending: false)
         fetchRequest.sortDescriptors = [fetchSort]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -149,6 +149,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
                 return
             }
             exercise.name = name
+            exercise.createDate = NSDate()
             do {
                 try self.context.save()
             } catch let error as NSError {
