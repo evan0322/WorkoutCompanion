@@ -49,8 +49,6 @@ class UIManager: NSObject {
         
         graphView.leftmostPointPadding = CGFloat(30)
         
-        
-        
         graphView.dataPointSpacing = 60
         graphView.dataPointSize = 2
         graphView.dataPointFillColor = Constants.themeColorAlabuster
