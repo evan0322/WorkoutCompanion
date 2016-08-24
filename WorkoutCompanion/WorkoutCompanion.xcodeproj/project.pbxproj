@@ -13,6 +13,7 @@
 		B52C79BE1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */; };
 		B53BECF21CFFD97F00944663 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */; };
 		B53BED721D012C7100944663 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BED711D012C7100944663 /* Constants.swift */; };
+		B547880A1D6D44F000ACA7A3 /* splashIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B54788091D6D44F000ACA7A3 /* splashIcon.png */; };
 		B56430BB1D67801500366C7E /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56430BA1D67801500366C7E /* UIManager.swift */; };
 		B59A89FE1D65FF5600A6AC28 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A89FD1D65FF5600A6AC28 /* CardView.swift */; };
 		B59CB00B1CFD2F3200D2E1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB00A1CFD2F3200D2E1E0 /* AppDelegate.swift */; };
@@ -56,6 +57,7 @@
 		B52C79BD1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDetailTableViewController.swift; sourceTree = "<group>"; };
 		B53BECF11CFFD97F00944663 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B53BED711D012C7100944663 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B54788091D6D44F000ACA7A3 /* splashIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splashIcon.png; path = WorkoutCompanion/Images/splashIcon.png; sourceTree = "<group>"; };
 		B56430BA1D67801500366C7E /* UIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIManager.swift; path = Manager/UIManager.swift; sourceTree = "<group>"; };
 		B59A89FD1D65FF5600A6AC28 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B59CB0071CFD2F3200D2E1E0 /* WorkoutCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,9 +119,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B54788061D6D424A00ACA7A3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B54788091D6D44F000ACA7A3 /* splashIcon.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		B59CAFFE1CFD2F3200D2E1E0 = {
 			isa = PBXGroup;
 			children = (
+				B54788061D6D424A00ACA7A3 /* Images */,
 				B59CB0091CFD2F3200D2E1E0 /* WorkoutCompanion */,
 				B59CB0201CFD2F3200D2E1E0 /* WorkoutCompanionTests */,
 				B59CB02B1CFD2F3200D2E1E0 /* WorkoutCompanionUITests */,
@@ -315,6 +326,7 @@
 				B59CB0171CFD2F3200D2E1E0 /* LaunchScreen.storyboard in Resources */,
 				B59CB0141CFD2F3200D2E1E0 /* Assets.xcassets in Resources */,
 				B59CB0121CFD2F3200D2E1E0 /* Main.storyboard in Resources */,
+				B547880A1D6D44F000ACA7A3 /* splashIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
