@@ -59,7 +59,7 @@ class ExerciseDetailTableViewController: UITableViewController {
         }
         //Caculate One-Rep Max with Epley Formula
         let detail = details[indexPath.row] as ExerciseData
-        let oneRepMax = Int((Double(detail.reps)/30+1)*Double(detail.weight))
+        let oneRepMax = detail.reps==1 ? Int(detail.weight) : Int((Double(detail.reps)/30+1)*Double(detail.weight))
         
         cell.cardFirstSectionLabel!.text = "\(String(detail.sets))"
         cell.cardSecondSectionLabel!.text = "\(String(detail.reps))"
