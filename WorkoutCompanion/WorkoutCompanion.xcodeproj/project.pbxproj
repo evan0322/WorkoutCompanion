@@ -23,7 +23,6 @@
 		B59CB0171CFD2F3200D2E1E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59CB0151CFD2F3200D2E1E0 /* LaunchScreen.storyboard */; };
 		B59CB0221CFD2F3200D2E1E0 /* WorkoutCompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB0211CFD2F3200D2E1E0 /* WorkoutCompanionTests.swift */; };
 		B59CB02D1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB02C1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift */; };
-		B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */; };
 		B5A9495D1D4BE6370093B301 /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9495C1D4BE6370093B301 /* Swizzling.swift */; };
 		B5CBE92D1D484B970056FACC /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBE92C1D484B970056FACC /* CardTableViewCell.swift */; };
 		FAE90208113104269BA330C6 /* Pods_WorkoutCompanionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4599B230B2D05E6765DD5C95 /* Pods_WorkoutCompanionUITests.framework */; };
@@ -73,7 +72,6 @@
 		B59CB0281CFD2F3200D2E1E0 /* WorkoutCompanionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutCompanionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59CB02C1CFD2F3200D2E1E0 /* WorkoutCompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompanionUITests.swift; sourceTree = "<group>"; };
 		B59CB02E1CFD2F3200D2E1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B5A9495C1D4BE6370093B301 /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
 		B5CBE92C1D484B970056FACC /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		B8655585818F0733175C353D /* Pods-WorkoutCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkoutCompanion/Pods-WorkoutCompanion.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				B59CB0131CFD2F3200D2E1E0 /* Assets.xcassets */,
 				B59CB0151CFD2F3200D2E1E0 /* LaunchScreen.storyboard */,
 				B59CB0181CFD2F3200D2E1E0 /* Info.plist */,
-				B59CB03C1CFD327800D2E1E0 /* TableViewController.swift */,
 				B53BECF01CFFD97F00944663 /* CoreDataModel.xcdatamodeld */,
 				B53BED711D012C7100944663 /* Constants.swift */,
 				B5120C271D0B0E9F00B216A7 /* DataModules.swift */,
@@ -482,7 +479,6 @@
 				B59CB00D1CFD2F3200D2E1E0 /* ExerciseListTableVIewController.swift in Sources */,
 				B5A9495D1D4BE6370093B301 /* Swizzling.swift in Sources */,
 				B52C79BE1D0F0C32002FF7AC /* ExerciseDetailTableViewController.swift in Sources */,
-				B59CB03D1CFD327800D2E1E0 /* TableViewController.swift in Sources */,
 				B59A89FE1D65FF5600A6AC28 /* CardView.swift in Sources */,
 				B53BED721D012C7100944663 /* Constants.swift in Sources */,
 			);
@@ -631,6 +627,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wx.WorkoutCompanion;
 				PRODUCT_NAME = Companion;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -643,6 +640,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wx.WorkoutCompanion;
 				PRODUCT_NAME = Companion;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -105,9 +105,9 @@ class ExerciseDetailTableViewController: UITableViewController {
             showCloseButton: false
         )
         let alert = SCLAlertView(appearance: appearance)
-        let repsInput = alert.addTextField("Reps Per Set")
-        let setsInput = alert.addTextField("Total Sets")
-        let weightInput = alert.addTextField("Weight Per Rep")
+        let repsInput = alert.addTextField(Constants.stringPlaceHolderReps)
+        let setsInput = alert.addTextField(Constants.stringPlaceHolderSets)
+        let weightInput = alert.addTextField(Constants.stringPlaceHolderWeight)
         repsInput.keyboardType = UIKeyboardType.NumberPad
         setsInput.keyboardType = UIKeyboardType.NumberPad
         weightInput.keyboardType = UIKeyboardType.NumberPad
@@ -115,10 +115,10 @@ class ExerciseDetailTableViewController: UITableViewController {
         
         var alertViewResponder = SCLAlertViewResponder(alertview: alert)
         
-        alert.addButton("Add", backgroundColor: Constants.themeColorBlack, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+        alert.addButton(Constants.stringButtonAdd, backgroundColor: Constants.themeColorBlack, textColor: UIColor.whiteColor(), showDurationStatus: false) {
            //Validate data
             guard (repsInput.text != "" && setsInput.text != "" && weightInput.text != "") else{
-                alertViewResponder.setSubTitle("Data cannot be empty")
+                alertViewResponder.setSubTitle(Constants.stringWarningDataEmpty)
                 return
             }
             guard let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.ExerciseData.rawValue, inManagedObjectContext:self.context) else {
@@ -150,10 +150,10 @@ class ExerciseDetailTableViewController: UITableViewController {
         }
         
         alertViewResponder = alert.showTitle(
-            "Add An Workout", // Title of view
-            subTitle: "Enter the data below", // String of view
+            Constants.stringAlertTitleAddWorkout, // Title of view
+            subTitle: Constants.stringAlertSubtitleEnterData, // String of view
             duration: 0.0, // Duration to show before closing automatically, default: 0.0
-            completeText: "Done", // Optional button value, default: ""
+            completeText: Constants.stringButtonDone, // Optional button value, default: ""
             style: .Success, // Styles - see below.
             colorStyle: 0xFFFFFF,
             colorTextButton: 0xFFFFFF

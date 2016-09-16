@@ -30,7 +30,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         self.tableView.backgroundColor = Constants.themeColorAlabuster
         self.tableView.separatorStyle = .None
         
-        self.title = "Exercise"
+        self.title = Constants.stringListTableViewTitle
         
         navigationItem.leftBarButtonItem = editButtonItem()
         
@@ -131,14 +131,14 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             showCloseButton: false
         )
         let alert = SCLAlertView(appearance: appearance)
-        let nameInput = alert.addTextField("Name")
+        let nameInput = alert.addTextField(Constants.stringPlaceHolderName)
         
         var alertViewResponder = SCLAlertViewResponder(alertview: alert)
         
-        alert.addButton("Add", backgroundColor: Constants.themeColorBlack, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+        alert.addButton(Constants.stringButtonAdd, backgroundColor: Constants.themeColorBlack, textColor: UIColor.whiteColor(), showDurationStatus: false) {
             //Validate data
             guard (nameInput.text != "") else{
-                alertViewResponder.setSubTitle("Name cannot be empty")
+                alertViewResponder.setSubTitle(Constants.stringWarningNameEmpty)
                 return
             }
             
@@ -157,15 +157,15 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             alert.hideView()
         }
         
-        alert.addButton("Cancel", backgroundColor: Constants.themeColorMadderLake, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+        alert.addButton(Constants.stringButtonCancel, backgroundColor: Constants.themeColorMadderLake, textColor: UIColor.whiteColor(), showDurationStatus: false) {
             alert.hideView()
         }
         
         alertViewResponder = alert.showTitle(
-            "Add An Exercise", // Title of view
-            subTitle: "Enter the name", // String of view
+            Constants.stringAlertTitleAddExercise, // Title of view
+            subTitle: Constants.stringAlertSubtitleEnterName, // String of view
             duration: 0.0, // Duration to show before closing automatically, default: 0.0
-            completeText: "Done", // Optional button value, default: ""
+            completeText: Constants.stringButtonDone, // Optional button value, default: ""
             style: .Success, // Styles - see below.
             colorStyle: 0xFFFFFF,
             colorTextButton: 0xFFFFFF
