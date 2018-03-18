@@ -21,12 +21,12 @@ class UIManager: NSObject {
         if add {
             let noDataLabel: UILabel     = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
             
-            let attrs = [NSForegroundColorAttributeName: UIColor.lightGrayColor(),
+            let attrs = [NSForegroundColorAttributeName: UIColor.lightGrayColor,
                          NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 24)!,
                          NSTextEffectAttributeName: NSTextEffectLetterpressStyle]
             
             noDataLabel.attributedText   =  NSAttributedString(string: "No Data", attributes: attrs)
-            noDataLabel.textAlignment    = .Center
+            noDataLabel.textAlignment    = .center
             tableView.backgroundView = noDataLabel
             
 

@@ -1,7 +1,7 @@
 PODS:
-  - SCLAlertView (0.5.9)
-  - ScrollableGraphView (1.2.1)
-  - SwiftDate (3.0.8)
+  - SCLAlertView (0.8)
+  - ScrollableGraphView (4.0.4)
+  - SwiftDate (4.5.1)
 
 DEPENDENCIES:
   - SCLAlertView
@@ -9,10 +9,10 @@ DEPENDENCIES:
   - SwiftDate
 
 SPEC CHECKSUMS:
-  SCLAlertView: d7c6a48c7d340e60206d4ed0e8ebcbff3b9d2a44
-  ScrollableGraphView: 1eb9a448d04eff270b4a26f7e437b57f056230b7
-  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  ScrollableGraphView: 072ea302f4ca27779692656a49d51fe537b2b1e7
+  SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
 
 PODFILE CHECKSUM: cd2d15e181e331d7a6ed13e156467a8830e381fa
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.4.0

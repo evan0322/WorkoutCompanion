@@ -29,7 +29,7 @@ class CardTableViewCell: UITableViewCell {
         super.awakeFromNib()
         cardView.layer.cornerRadius = 5
         cardView.layer.masksToBounds = true
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         cardView.backgroundColor = Constants.themeColorHarvardCrimson
         
         cardTitleLabel?.textColor = Constants.themeColorWhite
@@ -37,17 +37,17 @@ class CardTableViewCell: UITableViewCell {
         cardSecondSectionLabel?.textColor = Constants.themeColorWhite
         cardThirdSectionLabel?.textColor = Constants.themeColorWhite
         cardDetailLabel?.textColor = Constants.themeColorWhite
-        cardDateLabel?.textColor = UIColor.lightGrayColor()
-        cardGraphView?.backgroundColor = UIColor.clearColor()
-        cardTitleView?.backgroundColor = UIColor.clearColor()
-        cardSectionsView?.backgroundColor = UIColor.clearColor()
-        cardTitleView?.addBorder(edges:[.Bottom], colour: Constants.themeColorAlabuster, thickness: 1) // All except Top, red, thickness 3
+        cardDateLabel?.textColor = UIColor.lightGrayColor
+        cardGraphView?.backgroundColor = UIColor.clearColor
+        cardTitleView?.backgroundColor = UIColor.clearColor
+        cardSectionsView?.backgroundColor = UIColor.clearColor
+        cardTitleView?.addBorder(edges:[.bottom], colour: Constants.themeColorAlabuster, thickness: 1) // All except Top, red, thickness 3
     }
     
     
     
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
