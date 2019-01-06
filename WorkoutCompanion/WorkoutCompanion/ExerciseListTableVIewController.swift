@@ -194,7 +194,8 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
         default: break
         }
-    }    
+    }
+    
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
@@ -212,7 +213,8 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
             let exercise = fetchedResultsController.object(at: indexPath as IndexPath) as! Exercise
