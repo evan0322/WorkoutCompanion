@@ -16,17 +16,17 @@ class ExerciseDetailTableViewController: UITableViewController {
     var exerciseDetails:[ExerciseData]?
     
     lazy var context: NSManagedObjectContext = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.managedObjectContext
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData]
-        exerciseDetails = exerciseDetails!.sort(){ data1,data2 in
-            return data1.date.compare(data2.date) == NSComparisonResult.OrderedDescending
-        }
-        self.tableView.separatorStyle = .None
+        exerciseDetails = exerciseDetails!.sorted(by:{ data1,data2 in
+            return data1.date.compare(data2.date as Date) == ComparisonResult.orderedDescending
+        })
+        self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = Constants.themeColorAlabuster
         self.title = exercise.name
     }
@@ -36,24 +36,24 @@ class ExerciseDetailTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let details = exerciseDetails else {
             return 0
         }
         if details.count < 1 {
-            UIManager.sharedInstance().handleNoDataLabel(true, forTableView: self.tableView)
+            UIManager.sharedInstance().handleNoDataLabel(add: true, forTableView: self.tableView)
         } else {
-            UIManager.sharedInstance().handleNoDataLabel(false, forTableView: self.tableView)
+            UIManager.sharedInstance().handleNoDataLabel(add: false, forTableView: self.tableView)
         }
         return details.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : CardTableViewCell = tableView.dequeueReusableCellWithIdentifier("cardTableViewCell", forIndexPath: indexPath) as! CardTableViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell : CardTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cardTableViewCell", for: indexPath as IndexPath) as! CardTableViewCell
         guard let details = exerciseDetails else {
             return cell
         }
@@ -66,26 +66,26 @@ class ExerciseDetailTableViewController: UITableViewController {
         cell.cardThirdSectionLabel!.text = "\(String(detail.weight))"
         cell.cardDateLabel!.text = detail.date.toString()
         cell.cardDetailLabel!.text = "\(oneRepMax)"
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         cell.tintColor = Constants.themeColorWhite
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 140
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
-        case .Delete:
+        case .delete:
             let exerciseDetail = exerciseDetails![indexPath.row]
-            context.deleteObject(exerciseDetail)
-            exerciseDetails?.removeAtIndex(indexPath.row)
+            context.delete(exerciseDetail)
+            exerciseDetails?.remove(at: indexPath.row)
             do {
                 try context.save()
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
             } catch let error as NSError {
                 print("Error saving context after delete: \(error.localizedDescription)")
             }
@@ -99,64 +99,65 @@ class ExerciseDetailTableViewController: UITableViewController {
             kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
             kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
             kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
-            contentViewColor:Constants.themeColorAlabuster,
-            showCircularIcon: false,
-            shouldAutoDismiss: false,
-            showCloseButton: false
+            showCloseButton: false, showCircularIcon: false, shouldAutoDismiss: false, contentViewColor:Constants.themeColorAlabuster
         )
         let alert = SCLAlertView(appearance: appearance)
         let repsInput = alert.addTextField(Constants.stringPlaceHolderReps)
         let setsInput = alert.addTextField(Constants.stringPlaceHolderSets)
         let weightInput = alert.addTextField(Constants.stringPlaceHolderWeight)
-        repsInput.keyboardType = UIKeyboardType.NumberPad
-        setsInput.keyboardType = UIKeyboardType.NumberPad
-        weightInput.keyboardType = UIKeyboardType.NumberPad
+        repsInput.keyboardType = UIKeyboardType.numberPad
+        setsInput.keyboardType = UIKeyboardType.numberPad
+        weightInput.keyboardType = UIKeyboardType.numberPad
         
         
         var alertViewResponder = SCLAlertViewResponder(alertview: alert)
         
-        alert.addButton(Constants.stringButtonAdd, backgroundColor: Constants.themeColorBlack, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+        alert.addButton(Constants.stringButtonAdd, backgroundColor: Constants.themeColorBlack, textColor: UIColor.white, showTimeout: nil) {
            //Validate data
             guard (repsInput.text != "" && setsInput.text != "" && weightInput.text != "") else{
                 alertViewResponder.setSubTitle(Constants.stringWarningDataEmpty)
                 return
             }
-            guard let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.ExerciseData.rawValue, inManagedObjectContext:self.context) else {
+            guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreDataEntityType.ExerciseData.rawValue, in:self.context) else {
                 return
             }
-            let exerciseData = ExerciseData(entity: entity, insertIntoManagedObjectContext:self.context)
+            let exerciseData = ExerciseData(entity: entity, insertInto:self.context)
             exerciseData.setValue(Int(repsInput.text!), forKey: "Reps")
             exerciseData.setValue(Int(setsInput.text!), forKey: "Sets")
             exerciseData.setValue(Int(weightInput.text!), forKey: "Weight")
-            exerciseData.setValue(NSDate(), forKey: "Date")
+            exerciseData.setValue(Date(), forKey: "Date")
             exerciseData.exercise = self.exercise
-            let exerciseDatas = self.exercise.mutableOrderedSetValueForKey("exerciseData")
-            exerciseDatas.insertObject(exerciseData, atIndex: 0)
+            let exerciseDatas = self.exercise.mutableOrderedSetValue(forKey: "exerciseData")
+            exerciseDatas.insert(exerciseData, at: 0)
             do {
                 try self.context.save()
             } catch let error as NSError {
                 print("Error saving movie \(error.localizedDescription)")
             }
             alert.hideView()
-            self.exerciseDetails?.insert(exerciseData, atIndex: 0)
+            self.exerciseDetails?.insert(exerciseData, at: 0)
             self.tableView.beginUpdates()
-            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+            self.tableView.insertRows(at: [NSIndexPath(row: 0, section: 0) as IndexPath], with: .fade)
             self.tableView.endUpdates()
             
         }
         
-        alert.addButton("Cancel", backgroundColor: Constants.themeColorMadderLake, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+        alert.addButton("Cancel", backgroundColor: Constants.themeColorMadderLake, textColor: UIColor.white, showTimeout: nil) {
             alert.hideView()
         }
         
-        alertViewResponder = alert.showTitle(
-            Constants.stringAlertTitleAddWorkout, // Title of view
-            subTitle: Constants.stringAlertSubtitleEnterData, // String of view
-            duration: 0.0, // Duration to show before closing automatically, default: 0.0
-            completeText: Constants.stringButtonDone, // Optional button value, default: ""
-            style: .Success, // Styles - see below.
-            colorStyle: 0xFFFFFF,
-            colorTextButton: 0xFFFFFF
-        )
+        alertViewResponder =  alert.showTitle(Constants.stringAlertTitleAddWorkout,
+                                                                   subTitle: Constants.stringAlertSubtitleEnterData,
+                                                                   timeout: nil,
+                                                                   completeText: Constants.stringButtonDone,
+                                                                   style: .success,
+                                                                   colorStyle: 0xFFFFFF,
+                                                                   colorTextButton: 0xFFFFFF,
+                                                                   circleIconImage: nil,
+                                                                   animationStyle: .topToBottom)
+        
+        
+        
+        
     }
 }

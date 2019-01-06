@@ -14,30 +14,30 @@ import SCLAlertView
 class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     lazy var context: NSManagedObjectContext = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.managedObjectContext
     }()
-    var fetchedResultsController: NSFetchedResultsController!
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.barStyle = UIBarStyle.Default
+        self.navigationController!.navigationBar.barStyle = UIBarStyle.default
         self.navigationController!.navigationBar.tintColor = Constants.themeColorHarvardCrimson
         self.navigationController?.navigationBar.barTintColor = Constants.themeColorAlabuster
         self.navigationController!.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName : Constants.themeColorHarvardCrimson
         ]
         self.tableView.backgroundColor = Constants.themeColorAlabuster
-        self.tableView.separatorStyle = .None
+        self.tableView.separatorStyle = .none
         
         self.title = Constants.stringListTableViewTitle
         
-        navigationItem.leftBarButtonItem = editButtonItem()
+        navigationItem.leftBarButtonItem = editButtonItem
         
 
         
         //Fetch exercise types
-        let fetchRequest = NSFetchRequest(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreDataEntityType.Exercise.rawValue)
         let fetchSort = NSSortDescriptor(key:"createDate", ascending: false)
         fetchRequest.sortDescriptors = [fetchSort]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
@@ -49,7 +49,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
     
@@ -59,34 +59,34 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         guard let sectionCount = fetchedResultsController.sections?.count else {
             return 0
         }
         return sectionCount
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sectionData = fetchedResultsController.sections?[section] else {
             return 0
         }
         if sectionData.numberOfObjects < 1 {
-            UIManager.sharedInstance().handleNoDataLabel(true, forTableView: self.tableView)
+            UIManager.sharedInstance().handleNoDataLabel(add: true, forTableView: self.tableView)
             self.navigationItem.leftBarButtonItem = nil
         } else {
-            UIManager.sharedInstance().handleNoDataLabel(false, forTableView: self.tableView)
-            self.navigationItem.leftBarButtonItem = editButtonItem()
+            UIManager.sharedInstance().handleNoDataLabel(add: false, forTableView: self.tableView)
+            self.navigationItem.leftBarButtonItem = editButtonItem
         }
         return sectionData.numberOfObjects
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let exercise = fetchedResultsController.objectAtIndexPath(indexPath) as! Exercise
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let exercise = fetchedResultsController.object(at: indexPath as IndexPath) as! Exercise
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath) as! CardTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath as IndexPath) as! CardTableViewCell
         cell.cardTitleLabel!.text = exercise.name
-        cell.backgroundColor = UIColor.clearColor()
-        cell.cardDateLabel?.textColor = UIColor.lightGrayColor()
+        cell.backgroundColor = UIColor.clear
+        cell.cardDateLabel?.textColor = UIColor.lightGray
         
         
         if let exerciseDetails = exercise.exerciseData.allObjects as? [ExerciseData] {
@@ -106,7 +106,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             
             //Generate ScrollableGraphView
             //Make sure the graph view will not exceed content view while editing
-            let graphView = UIManager.sharedInstance().generateScrollableGraphViewViewWithFrame(CGRectMake(0, 0, cell.contentView.frame.width - 55, cell.cardGraphView!.frame.height), data: data, labels: labels)
+            let graphView = UIManager.sharedInstance().generateScrollableGraphViewViewWithFrame(data: data, labels: labels)
             for view in cell.cardGraphView!.subviews{
                 view.removeFromSuperview()
             }
@@ -116,7 +116,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 200
     }
     
@@ -125,30 +125,27 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
             kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
             kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
-            contentViewColor:Constants.themeColorAlabuster,
-            showCircularIcon: false,
-            shouldAutoDismiss: false,
-            showCloseButton: false
+            showCloseButton: false, showCircularIcon: false, shouldAutoDismiss: false, contentViewColor:Constants.themeColorAlabuster
         )
         let alert = SCLAlertView(appearance: appearance)
         let nameInput = alert.addTextField(Constants.stringPlaceHolderName)
         
         var alertViewResponder = SCLAlertViewResponder(alertview: alert)
         
-        alert.addButton(Constants.stringButtonAdd, backgroundColor: Constants.themeColorBlack, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+        alert.addButton(Constants.stringButtonAdd, backgroundColor: Constants.themeColorBlack, textColor: UIColor.white, showTimeout: nil) {
             //Validate data
             guard (nameInput.text != "") else{
                 alertViewResponder.setSubTitle(Constants.stringWarningNameEmpty)
                 return
             }
             
-            let entity = NSEntityDescription.entityForName(Constants.CoreDataEntityType.Exercise.rawValue, inManagedObjectContext: self.context)
-            let exercise = Exercise(entity: entity!, insertIntoManagedObjectContext:self.context)
+            let entity = NSEntityDescription.entity(forEntityName: Constants.CoreDataEntityType.Exercise.rawValue, in: self.context)
+            let exercise = Exercise(entity: entity!, insertInto:self.context)
             guard let name = nameInput.text else {
                 return
             }
             exercise.name = name
-            exercise.createDate = NSDate()
+            exercise.createDate = Date()
             do {
                 try self.context.save()
             } catch let error as NSError {
@@ -157,19 +154,20 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             alert.hideView()
         }
         
-        alert.addButton(Constants.stringButtonCancel, backgroundColor: Constants.themeColorMadderLake, textColor: UIColor.whiteColor(), showDurationStatus: false) {
+        alert.addButton(Constants.stringButtonCancel, backgroundColor: Constants.themeColorMadderLake, textColor: UIColor.white, showTimeout: nil) {
             alert.hideView()
         }
         
-        alertViewResponder = alert.showTitle(
-            Constants.stringAlertTitleAddExercise, // Title of view
-            subTitle: Constants.stringAlertSubtitleEnterName, // String of view
-            duration: 0.0, // Duration to show before closing automatically, default: 0.0
-            completeText: Constants.stringButtonDone, // Optional button value, default: ""
-            style: .Success, // Styles - see below.
-            colorStyle: 0xFFFFFF,
-            colorTextButton: 0xFFFFFF
-        )
+        alertViewResponder = alert.showTitle(Constants.stringAlertTitleAddExercise,
+                                             subTitle: Constants.stringAlertSubtitleEnterName,
+                                             timeout: nil,
+                                             completeText: Constants.stringButtonDone,
+                                             style: .success,
+                                             colorStyle: 0xFFFFFF,
+                                             colorTextButton: 0xFFFFFF,
+                                             circleIconImage: nil,
+                                             animationStyle: .topToBottom)
+        
         
     }
     
@@ -178,45 +176,45 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         //TODO
     }
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
+        case .delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
         default: break
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertRows(at: [newIndexPath! as IndexPath], with: .automatic)
             self.navigationController?.setEditing(false, animated: true)
             self.tableView!.setEditing(false, animated: true)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath! as IndexPath], with: .automatic)
         default: break
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
-        case .Delete:
-            let exercise = fetchedResultsController.objectAtIndexPath(indexPath) as! Exercise
-            context.deleteObject(exercise)
+        case .delete:
+            let exercise = fetchedResultsController.object(at: indexPath as IndexPath) as! Exercise
+            context.delete(exercise)
             do {
                 try context.save()
             } catch let error as NSError {
@@ -226,17 +224,17 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         }
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         //Disable swap to delete function as it will confuse the user with the graph view
-        if self.tableView.editing {return .Delete}
-        return .None
+        if self.tableView.isEditing {return .delete}
+        return .none
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toDetailSegue") {
-            if let detailTableViewController = segue.destinationViewController as? ExerciseDetailTableViewController{
+            if let detailTableViewController = segue.destination as? ExerciseDetailTableViewController{
                 let indexPath = self.tableView.indexPathForSelectedRow!
-                let exercise = fetchedResultsController.objectAtIndexPath(indexPath) as! Exercise
+                let exercise = fetchedResultsController.object(at: indexPath) as! Exercise
                 detailTableViewController.exercise = exercise
             }
             // pass data to next view

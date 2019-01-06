@@ -37,10 +37,10 @@ class CardTableViewCell: UITableViewCell {
         cardSecondSectionLabel?.textColor = Constants.themeColorWhite
         cardThirdSectionLabel?.textColor = Constants.themeColorWhite
         cardDetailLabel?.textColor = Constants.themeColorWhite
-        cardDateLabel?.textColor = UIColor.lightGrayColor
-        cardGraphView?.backgroundColor = UIColor.clearColor
-        cardTitleView?.backgroundColor = UIColor.clearColor
-        cardSectionsView?.backgroundColor = UIColor.clearColor
+        cardDateLabel?.textColor = UIColor.lightGray
+        cardGraphView?.backgroundColor = UIColor.clear
+        cardTitleView?.backgroundColor = UIColor.clear
+        cardSectionsView?.backgroundColor = UIColor.clear
         cardTitleView?.addBorder(edges:[.bottom], colour: Constants.themeColorAlabuster, thickness: 1) // All except Top, red, thickness 3
     }
     

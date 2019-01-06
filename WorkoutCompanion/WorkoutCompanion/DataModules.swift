@@ -13,12 +13,12 @@ import Foundation
 
 class Exercise: NSManagedObject {
     @NSManaged var name: String
-    @NSManaged var createDate: NSDate
+    @NSManaged var createDate: Date
     @NSManaged var exerciseData: NSSet
 }
 
 class ExerciseData: NSManagedObject {
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var name: String
     @NSManaged var reps: Int64
     @NSManaged var sets: Int64
