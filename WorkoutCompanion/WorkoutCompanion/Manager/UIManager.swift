@@ -46,13 +46,11 @@ class UIManager: NSObject {
         
         graphView.tintColor = UIColor.red
         
-        for i in 0..<data.count {
-            let linePlot = LinePlot(identifier: "line\(i)") // Identifier should be unique for each plot.
-            linePlot.lineWidth = 1
-            linePlot.lineColor = Constants.themeColorAlabuster
-            linePlot.lineStyle = .smooth
-            graphView.addPlot(plot: linePlot)
-        }
+        let linePlot = LinePlot(identifier: "line") // Identifier should be unique for each plot.
+        linePlot.lineWidth = 1
+        linePlot.lineColor = Constants.themeColorAlabuster
+        linePlot.lineStyle = .smooth
+        graphView.addPlot(plot: linePlot)
         
         let referenceLines = ReferenceLines()
         referenceLines.dataPointLabelFont = UIFont.boldSystemFont(ofSize: 8)
@@ -65,8 +63,7 @@ class UIManager: NSObject {
         graphView.leftmostPointPadding = CGFloat(30)
         
         graphView.dataPointSpacing = 60
-        graphView.dataPointSpacing = 2
-        graphView.backgroundFillColor = Constants.themeColorAlabuster
+        graphView.backgroundFillColor = UIColor.clear
 
         
         let dataSource = CellDataSource(values: data, labels: labels)
