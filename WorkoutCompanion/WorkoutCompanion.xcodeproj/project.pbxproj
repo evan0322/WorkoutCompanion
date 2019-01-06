@@ -178,7 +178,7 @@
 				TargetAttributes = {
 					B59CB0061CFD2F3200D2E1E0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = AM939K9KS8;
+						DevelopmentTeam = TR9K24M5J5;
 					};
 				};
 			};
@@ -402,10 +402,10 @@
 			baseConfigurationReference = 56006F990C7CDD8BF9C553F3 /* Pods-WorkoutCompanion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AM939K9KS8;
+				DEVELOPMENT_TEAM = TR9K24M5J5;
 				INFOPLIST_FILE = WorkoutCompanion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wx.WorkoutCompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxie.WorkoutCompanion;
 				PRODUCT_NAME = Companion;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -417,10 +417,10 @@
 			baseConfigurationReference = B8655585818F0733175C353D /* Pods-WorkoutCompanion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AM939K9KS8;
+				DEVELOPMENT_TEAM = TR9K24M5J5;
 				INFOPLIST_FILE = WorkoutCompanion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wx.WorkoutCompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxie.WorkoutCompanion;
 				PRODUCT_NAME = Companion;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

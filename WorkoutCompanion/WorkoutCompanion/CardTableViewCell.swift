@@ -33,6 +33,7 @@ class CardTableViewCell: UITableViewCell {
         cardView.backgroundColor = Constants.themeColorHarvardCrimson
         
         cardTitleLabel?.textColor = Constants.themeColorWhite
+        cardTitleLabel?.font = UIFont(name: "HelveticaNeue", size: 25)!
         cardFirstSectionLabel?.textColor = Constants.themeColorWhite
         cardSecondSectionLabel?.textColor = Constants.themeColorWhite
         cardThirdSectionLabel?.textColor = Constants.themeColorWhite
