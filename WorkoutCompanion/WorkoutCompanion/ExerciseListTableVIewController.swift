@@ -59,14 +59,14 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
     
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         guard let sectionCount = fetchedResultsController.sections?.count else {
             return 0
         }
         return sectionCount
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sectionData = fetchedResultsController.sections?[section] else {
             return 0
         }
@@ -80,7 +80,7 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         return sectionData.numberOfObjects
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
         let exercise = fetchedResultsController.object(at: indexPath as IndexPath) as! Exercise
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath as IndexPath) as! CardTableViewCell
@@ -116,9 +116,11 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 200
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         return 200
     }
+
     
     @IBAction func addButtonPressed(sender: AnyObject) {
         let appearance = SCLAlertView.SCLAppearance(
@@ -176,11 +178,11 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         //TODO
     }
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
     
@@ -192,9 +194,9 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
         default: break
         }
-    }
+    }    
     
-    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath! as IndexPath], with: .automatic)
@@ -224,13 +226,13 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
         }
     }
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         //Disable swap to delete function as it will confuse the user with the graph view
         if self.tableView.isEditing {return .delete}
         return .none
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toDetailSegue") {
             if let detailTableViewController = segue.destination as? ExerciseDetailTableViewController{
                 let indexPath = self.tableView.indexPathForSelectedRow!

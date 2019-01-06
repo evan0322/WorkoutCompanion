@@ -36,11 +36,11 @@ class ExerciseDetailTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let details = exerciseDetails else {
             return 0
         }
@@ -52,7 +52,7 @@ class ExerciseDetailTableViewController: UITableViewController {
         return details.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
         let cell : CardTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cardTableViewCell", for: indexPath as IndexPath) as! CardTableViewCell
         guard let details = exerciseDetails else {
             return cell
@@ -73,11 +73,12 @@ class ExerciseDetailTableViewController: UITableViewController {
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
             let exerciseDetail = exerciseDetails![indexPath.row]
