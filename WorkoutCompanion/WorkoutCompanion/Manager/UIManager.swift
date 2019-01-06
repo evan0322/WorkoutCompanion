@@ -36,33 +36,41 @@ class UIManager: NSObject {
         
     }
     
-    func generateScrollableGraphViewViewWithFrame(data:[Double], labels:[String]) -> ScrollableGraphView {
-        let graphView = ScrollableGraphView()
+    func generateScrollableGraphViewViewWithFrame(frame:CGRect, data:[Double], labels:[String]) -> ScrollableGraphView {
+        let graphView = ScrollableGraphView(frame: frame)
         graphView.backgroundFillColor = Constants.themeColorHarvardCrimson
-        
+        graphView.shouldAdaptRange = true
+        graphView.shouldAnimateOnAdapt = true
+        graphView.shouldAnimateOnStartup = true
         graphView.rangeMax = 50
         
         graphView.tintColor = UIColor.red
-//        graphView.lineWidth = 1
-//        graphView.lineColor = Constants.themeColorAlabuster
-//        graphView.lineStyle = ScrollableGraphViewLineStyle.Smooth
+        
+        for i in 0..<data.count {
+            let linePlot = LinePlot(identifier: "line\(i)") // Identifier should be unique for each plot.
+            linePlot.lineWidth = 1
+            linePlot.lineColor = Constants.themeColorAlabuster
+            linePlot.lineStyle = .smooth
+            graphView.addPlot(plot: linePlot)
+        }
+        
+        let referenceLines = ReferenceLines()
+        referenceLines.dataPointLabelFont = UIFont.boldSystemFont(ofSize: 8)
+        referenceLines.referenceLineColor = Constants.themeColorAlabuster.withAlphaComponent(0.2)
+        referenceLines.referenceLineLabelColor = Constants.themeColorAlabuster
+        referenceLines.dataPointLabelColor = Constants.themeColorAlabuster.withAlphaComponent(0.5)
+        graphView.addReferenceLines(referenceLines: referenceLines)
+
         
         graphView.leftmostPointPadding = CGFloat(30)
         
         graphView.dataPointSpacing = 60
         graphView.dataPointSpacing = 2
         graphView.backgroundFillColor = Constants.themeColorAlabuster
-        
-//        graphView.referenceLineLabelFont = UIFont.boldSystemFontOfSize(8)
-//        graphView.referenceLineColor = Constants.themeColorAlabuster.colorWithAlphaComponent(0.2)
-//        graphView.referenceLineLabelColor = Constants.themeColorAlabuster
-//        graphView.dataPointLabelColor = Constants.themeColorAlabuster.colorWithAlphaComponent(0.5)
+
         
         let dataSource = CellDataSource(values: data, labels: labels)
-        
-//        graphView.shouldAdaptRange = true
-//        graphView.shouldAutomaticallyDetectRange = true
-//
+    
         graphView.dataSource = dataSource
         
         

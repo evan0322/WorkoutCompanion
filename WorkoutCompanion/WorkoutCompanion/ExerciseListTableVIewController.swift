@@ -106,7 +106,9 @@ class ExerciseListTableVIewController: UITableViewController, NSFetchedResultsCo
             
             //Generate ScrollableGraphView
             //Make sure the graph view will not exceed content view while editing
-            let graphView = UIManager.sharedInstance().generateScrollableGraphViewViewWithFrame(data: data, labels: labels)
+            
+            let frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: cell.contentView.frame.width - 55, height: cell.cardGraphView!.frame.height))
+            let graphView = UIManager.sharedInstance().generateScrollableGraphViewViewWithFrame(frame: frame, data: data, labels: labels)
             for view in cell.cardGraphView!.subviews{
                 view.removeFromSuperview()
             }
